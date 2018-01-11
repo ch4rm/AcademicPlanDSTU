@@ -1,20 +1,19 @@
 <%@ page import="org.scs.ap.database.Database" %>
-<%@ page import="org.scs.ap.view.HTML" %><%--
+<%@ page import="org.scs.ap.content.Titles" %><%--
   Created by IntelliJ IDEA.
   User: futurediary
   Date: 26.11.2017
   Time: 21:44
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%  Database database = new Database();
+    Titles titles = new Titles(database);
+%>
 <html>
-    <head>
-        <title>Титул</title>
-        <link rel=STYLESHEET type="text/css" href="styles/style.css">
-    </head>
-    <body>
-        <%  Database database = new Database();
-            HTML html = new HTML(database);
-        %>
-        <%=html.createTableSubjects()%>
-    </body>
-</html>
+<head>
+    <title>Титул</title>
+    <LINK REL="StyleSheet" HREF="<%=request.getContextPath()%>/styles/style.css" TYPE="text/css">
+</head>
+<%@ include file="top-container.jsp" %>
+zzzzz
+<%@ include file="bottom-container.jsp" %>

@@ -8,11 +8,13 @@
 <html>
     <head>
         <title>Главная</title>
-        <link rel=STYLESHEET type="text/css" href="styles/style.css">
+        <LINK REL="StyleSheet" HREF="<%=request.getContextPath()%>/styles/login.css" TYPE="text/css">
     </head>
     <body>
-        Login.<br>
-        Simple Menu:<br>
-        <a href="title">Титул</a>
+        <div class="submit">
+            Логин<br>
+            Пароль<br>
+            <a href="title">Титул</a>
+        </div>
     </body>
 </html>

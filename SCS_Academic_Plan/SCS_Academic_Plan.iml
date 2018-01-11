@@ -30,5 +30,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="postgresql-42.1.4" level="project" />
+    <orderEntry type="library" name="javax.servlet" level="project" />
   </component>
 </module>

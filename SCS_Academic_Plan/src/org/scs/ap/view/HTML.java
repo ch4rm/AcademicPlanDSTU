@@ -19,7 +19,7 @@ public class HTML {
     }
 
     public String createTableSubjects(){
-        Table table = new Table();
+        Table table = new Table(100);
         ArrayList<String> head = new ArrayList<>();
         head.add("key_subject");
         head.add("key_ap_fk");
@@ -59,7 +59,6 @@ public class HTML {
                 strings.add(resultSet.getString("pract_s"));
                 strings.add(resultSet.getString("ksr_s"));
                 strings.add(resultSet.getString("bsr_s"));
-                table.addColumn(strings);
             }
             resultSet.close();
             statement.close();

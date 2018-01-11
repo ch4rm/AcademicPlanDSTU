@@ -20,7 +20,10 @@ public class Title extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("title.jsp");
         if (dispatcher != null) {
             dispatcher.forward(request, response);
-        }/*
+        }
+
+
+        /*
         Database database = new Database();
         PrintWriter out = response.getWriter();
         out.write("<!DOCTYPE html>\n" +
