@@ -27,7 +27,7 @@
     <div class = "menu">
         <ul>
             <li><a href="">ТИТУЛ</a></li>
-            <li><a href="">ГСЕ</a></li>
+            <li><a href="">ГСЭ</a></li>
             <li><a href="">МЕН</a></li>
             <li><a href="">ПРОФ</a></li>
             <li><a href="">ИТОГ</a></li>
