@@ -29,10 +29,6 @@
 </div>
 <div class="wrapper">
     <div class="left-block custom-scrollbar">
-
-
-
-
         <table class="table-content" width="90%">
             <tr>
                 <td style="text-align:center;" colspan=2>

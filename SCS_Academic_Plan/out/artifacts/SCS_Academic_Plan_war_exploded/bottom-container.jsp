@@ -9,7 +9,6 @@
 </div>
 </div>
 </div>
-
 <div id="right-block" class="right-block">
     <button id="setting-but" onclick="setVisible()" class="right-button">></button>
 </div>

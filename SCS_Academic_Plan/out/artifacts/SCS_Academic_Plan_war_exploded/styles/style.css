@@ -45,7 +45,7 @@ body{
 
 /* ПРАВЫЙ БЛОК НАСТРОЕК */
 .right-block {
-	width:200px;
+	width: 200px;
 	height:calc(100% - (90px));
 	background-color:#EBEBEB;
 	text-align:center;
@@ -70,7 +70,7 @@ body{
 /* КОНТЕЙНЕР ДЛЯ ТАБЛИЦ */
 .content-block{
 	background:#FFFFFF;
-	width: 1754px;
+	width: 1900px;
 	height: 1240px;
 	margin: 40px;
 	box-shadow: 0 0 15px rgba(0,0,0,0.5);
@@ -78,7 +78,7 @@ body{
 
 /* ОТСТУПЫ */
 .content{
-	padding: 40px;
+	padding: 20px;
 }
 
 /* СКРОЛЛЫ ДЛЯ КОНТЕЙНЕРА */
@@ -108,6 +108,43 @@ body{
 	height: 29px;
 }
 
+.table-content{
+	text-align:center;
+	width: 100%;
+}
+
+/* ТЕКСТОВЫЕ ПОЛЯ */
+.text-field{
+	border: 0px solid #242424;
+	border-bottom-width: 1px;
+	width: 50px;
+}
+
+.title-table{
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.title-table tr td {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+/* СТИЛЬ НИЖНИХ ТАБЛИЦ TITLE */
+.down-table1{
+	float: left;
+	width: 850px;
+}
+
+.down-table2{
+	float: left;
+	width: 350px;
+}
+
+.down-table3{
+	float: left;
+	width: 500px;
+}
 
 /*body{
 	font-family: sans-serif;

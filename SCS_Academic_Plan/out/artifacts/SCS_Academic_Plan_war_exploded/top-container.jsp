@@ -12,14 +12,14 @@
         var style = document.getElementById("right-block").style;
         var style2 = document.getElementById("left-block").style;
         var button = document.getElementById("setting-but");
-        if(style.width == "200px") {
-            style.width = "25px";
-            style2.width="calc(100% - (25px))";
-            button.innerHTML="<";
-        }else{
+        if(style.width == "25px") {
             style.width = "200px";
             style2.width = "calc(100% - (200px))";
             button.innerHTML=">";
+        }else{
+            style.width = "25px";
+            style2.width="calc(100% - (25px))";
+            button.innerHTML="<";
         }
     }
 </script>

@@ -12,8 +12,6 @@ public class Table {
         setHead(head);
     }
 
-    public void setTableClass(String htmlClass){ this.htmlClass = htmlClass; }
-
     public void setHead(ArrayList<String> head){
         this.head = head;
     }
@@ -23,6 +21,10 @@ public class Table {
      */
     public Table(int htmlWidth){
         formattedString.append("<table class=\"" + htmlClass + "\" border=1 ");
+        formattedString.append("width=\"" + htmlWidth + "%\" >");}
+
+    public Table(int htmlWidth, String htmlClass){
+        formattedString.append("<table class=\"" + this.htmlClass+" " + htmlClass + "\" border=1 ");
         formattedString.append("width=\"" + htmlWidth + "%\" >");}
 
     public Table(){}
@@ -46,8 +48,16 @@ public class Table {
 
     public void add(String str){
         formattedString.append("<td>");
+        formattedString.append("<input style=\"width: 20px\" type=\"text\" class=\"text-field\" value=\"");
         formattedString.append(str);
-        formattedString.append("</td>");
+        formattedString.append("\"></td>");
+    }
+
+    public void add(String str, int width){
+        formattedString.append("<td>");
+        formattedString.append("<input style=\"width: "+ width +"px\" type=\"text\" class=\"text-field\" value=\"");
+        formattedString.append(str);
+        formattedString.append("\"></td>");
     }
 
     public void add(String str, String atribute){

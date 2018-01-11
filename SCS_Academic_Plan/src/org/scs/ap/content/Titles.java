@@ -121,7 +121,7 @@ public class Titles {
      * @return таблица html
      */
     public String getTimeBudgets() {
-        Table table = new Table(100);
+        Table table = new Table(30);
         Connection connection = database.getConnection();
         Statement statement;
         ResultSet resultSet;
@@ -153,10 +153,10 @@ public class Titles {
                 sumLower+=sumAll;
             }
             table.openRow();
-            table.add("Всего: ");
+            table.add("Всего: ", "");
             for(Integer i : lower)
-                table.add(i + "");
-            table.add(sumLower + "");
+                table.add(i + "", 30);
+            table.add(sumLower + "", 30);
             table.closeRow();
             resultSet.close();
             statement.close();
@@ -178,7 +178,7 @@ public class Titles {
      * @return таблица html
      */
     public String getPractics(){
-        Table table = new Table(80);
+        Table table = new Table(30);
         Connection connection = database.getConnection();
         Statement statement;
         try {
@@ -195,7 +195,7 @@ public class Titles {
             int sem=4;
             for(int i = 0; i<practNames.size(); i++) {
                 table.openRow();
-                table.add(practNames.get(i));
+                table.add(practNames.get(i), 150);
                 table.add(sem+"");
                 table.add(pract.get(i));
                 sem+=2;
@@ -215,7 +215,7 @@ public class Titles {
      * @return таблица html
      */
     public String genStateAtestation(){
-        Table table = new Table(80);
+        Table table = new Table(30);
         Connection connection = database.getConnection();
         Statement statement;
         try {
@@ -234,9 +234,9 @@ public class Titles {
                 state.add(resultSet.getString("semester_sc"));
             for(int i = 0; i<formSct.size(); i++) {
                 table.openRow();
-                table.add(formSct.get(i));
-                table.add(nameSct.get(i));
-                table.add(state.get(i));
+                table.add(formSct.get(i), 250);
+                table.add(nameSct.get(i), 250);
+                table.add(state.get(i), 20);
                 table.closeRow();
             }
             resultSet.close();
@@ -291,9 +291,9 @@ public class Titles {
 
     private void genHeadState(Table table){
         table.openRow();
-        table.add("Название учебной дисциплины");
-        table.add("Форма государственной итоговой аттестации (экзамен, ВКР)");
-        table.add("Семестр");
+        table.add("Название учебной дисциплины", "");
+        table.add("Форма государственной итоговой аттестации (экзамен, ВКР)", "");
+        table.add("Семестр", "");
         table.closeRow();
     }
 
