@@ -146,26 +146,6 @@ body{
 	width: 500px;
 }
 
-/* СОХРАНИТЬ ИЗМЕНЕНИЯ */
-.save-button{
-	float: right;
-	background-color: white;
-	border: none;
-	border: 2px solid #4CAF50;
-	color: #242424;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
-}
-
-.save-button:hover {
-	background-color: #4CAF50;
-	color: white;
-}
 /*body{
 	font-family: sans-serif;
 	margin:0;

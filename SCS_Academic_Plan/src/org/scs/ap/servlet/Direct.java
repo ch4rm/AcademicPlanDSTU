@@ -16,14 +16,14 @@ public class Direct extends HttpServlet {
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
+        /*response.setContentType("text/html"); //Задаем формат ответа - HTML, текст
+        PrintWriter out = response.getWriter(); //Получаем объект, позволяющий записать контент в ответ
+        out.write("<!DOCTYPE html>\n" + // Записываем в ответ HTML код простейшей странички
+                "<html>\n" +
+                "<head><title>K P A C U B O</title></head>\n" +
+                "<body bgcolor=\"#fdf5e6\">\n" +
+                "<h1>TUPA:</h1>\n" +
+                "<p>Perviy syjt na Java</p>\n" +
+                "</body></html>");*/
     }
 }
-
-/*
-response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("title.jsp");
-        if (dispatcher != null) {
-            dispatcher.forward(request, response);
-        }
- */

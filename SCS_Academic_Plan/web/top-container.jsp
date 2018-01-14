@@ -26,12 +26,12 @@
 <div class="wrapper">
     <div class = "menu">
         <ul>
-            <li><a href="title.jsp">ТИТУЛ</a></li>
-            <li><a href="hse.jsp">ГСЭ</a></li>
-            <li><a href="mns.jsp">МЕН</a></li>
-            <li><a href="prof.jsp">ПРОФ</a></li>
-            <li><a href="summary.jsp">ИТОГ</a></li>
-            <li><a href="calculation.jsp">РАСЧЕТ РУП</a></li>
+            <li><a href="">ТИТУЛ</a></li>
+            <li><a href="">ГСЭ</a></li>
+            <li><a href="">МЕН</a></li>
+            <li><a href="">ПРОФ</a></li>
+            <li><a href="">ИТОГ</a></li>
+            <li><a href="">РАСЧЕТ РУП</a></li>
         </ul>
     </div>
     <div id="left-block" class="left-block custom-scrollbar">
