@@ -46,25 +46,37 @@ public class Table {
         formattedString.append("</td>");
     }
 
-    public void add(String str){
+    public void add(String str, String style){
+        formattedString.append("<td style=\"" + style + "\">");
+        formattedString.append(str);
+        formattedString.append("</td>");
+    }
+
+    /**
+     * Добавить text-field
+     * @param str - содержимое
+     */
+    public void addField(String str){
         formattedString.append("<td>");
         formattedString.append("<input style=\"width: 20px\" type=\"text\" class=\"text-field\" value=\"");
         formattedString.append(str);
         formattedString.append("\"></td>");
     }
 
-    public void add(String str, int width){
+    public void addField(String str, int width){
         formattedString.append("<td>");
         formattedString.append("<input style=\"width: "+ width +"px\" type=\"text\" class=\"text-field\" value=\"");
         formattedString.append(str);
         formattedString.append("\"></td>");
     }
 
-    public void add(String str, String atribute){
-        formattedString.append("<td style=\"" + atribute + "\">");
+    public void addField(String str, String name){
+        formattedString.append("<td>");
+        formattedString.append("<input type=\"text\" name = \"" + name + "\" style=\"width: 20px\" class=\"text-field\" value=\"");
         formattedString.append(str);
-        formattedString.append("</td>");
+        formattedString.append("\"></td>");
     }
+
 
     /**
      * Закрыть строку

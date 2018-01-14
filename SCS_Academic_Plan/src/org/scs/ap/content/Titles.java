@@ -87,7 +87,7 @@ public class Titles {
             str.add(resultSet.getString(s));
         int size = str.size()/Integer.parseInt(termsEducation);
         for(int i=0; i<size;i++)
-            table.add(str.get(i));
+            table.addField(str.get(i), s+i);
         table.closeRow();
         resultSet.close();
     }
@@ -104,12 +104,12 @@ public class Titles {
         int kurs=0;
         for(int i=0; i<Integer.parseInt(termsEducation); i++){
             table.openRow();
-            table.add(i+"");
+            table.addField(i+"");
             for(int j=0; j<size; j++){
                 if(str.get(kurs)==null)
-                    table.add("");
+                    table.addField("");
                 else
-                    table.add(str.get(kurs));
+                    table.addField(str.get(kurs));
                 kurs++;
             }
             table.closeRow();
@@ -136,7 +136,7 @@ public class Titles {
             while (resultSet.next()) {
                 ArrayList<Integer> all = new ArrayList<>();
                 table.openRow();
-                table.add(resultSet.getString("course_tb"));
+                table.addField(resultSet.getString("course_tb"));
                 putAndCount(resultSet, lower, all, "weeks_theory_tb");
                 putAndCount(resultSet, lower, all, "weeks_session_tb");
                 putAndCount(resultSet, lower, all, "weeks_pract_tb");
@@ -145,18 +145,18 @@ public class Titles {
                 putAndCount(resultSet, lower, all, "weeks_holiday_tb");
                 int sumAll = 0;
                 for(Integer i : all) {
-                    table.add(i + "");
+                    table.addField(i + "");
                     sumAll+=i;
                 }
-                table.add(sumAll + "");
+                table.addField(sumAll + "");
                 table.closeRow();
                 sumLower+=sumAll;
             }
             table.openRow();
-            table.add("Всего: ", "");
+            table.add("Всего: ", 1, 1);
             for(Integer i : lower)
-                table.add(i + "", 30);
-            table.add(sumLower + "", 30);
+                table.add(i + "", 1, 1);
+            table.add(sumLower + "", 1, 1);
             table.closeRow();
             resultSet.close();
             statement.close();
@@ -195,9 +195,9 @@ public class Titles {
             int sem=4;
             for(int i = 0; i<practNames.size(); i++) {
                 table.openRow();
-                table.add(practNames.get(i), 150);
-                table.add(sem+"");
-                table.add(pract.get(i));
+                table.addField(practNames.get(i), 150);
+                table.addField(sem+"");
+                table.addField(pract.get(i));
                 sem+=2;
                 table.closeRow();
             }
@@ -234,9 +234,9 @@ public class Titles {
                 state.add(resultSet.getString("semester_sc"));
             for(int i = 0; i<formSct.size(); i++) {
                 table.openRow();
-                table.add(formSct.get(i), 250);
-                table.add(nameSct.get(i), 250);
-                table.add(state.get(i), 20);
+                table.addField(formSct.get(i), 250);
+                table.addField(nameSct.get(i), 250);
+                table.addField(state.get(i), 20);
                 table.closeRow();
             }
             resultSet.close();
