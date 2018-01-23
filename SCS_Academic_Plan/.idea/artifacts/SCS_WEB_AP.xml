@@ -1,0 +1,43 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SCS_WEB_AP">
+    <output-path>$PROJECT_DIR$/out/artifacts/SCS_WEB_AP</output-path>
+    <root id="archive" name="SCS_WEB_AP.war">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/web/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="SCS_Academic_Plan" />
+      <element id="javaee-facet-resources" facet="SCS_Academic_Plan/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.servlet" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/el-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/jasper.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/jsp-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/ecj-4.6.3.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/jasper-el.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/jaspic-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jni.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-ha.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-dbcp.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jdbc.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-ant.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-coyote.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/websocket-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-es.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-fr.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-ja.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/annotations-api.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-tribes.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util-scan.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-websocket.jar" />
+          <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-storeconfig.jar" />
+          <element id="library" level="project" name="postgresql-42.1.4" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
