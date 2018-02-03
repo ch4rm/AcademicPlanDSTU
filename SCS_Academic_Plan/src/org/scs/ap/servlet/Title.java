@@ -25,6 +25,7 @@ public class Title extends HttpServlet {
             placeHead(request);
             placeMatrixShedulesUp(request);
             placePractics(request);
+            placeStateAttestaion(request);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -100,6 +101,9 @@ public class Title extends HttpServlet {
         resultSet.close();
     }
 
+    /**
+     * Вносим изменения в таблицу практики
+     */
     private void placePractics(HttpServletRequest request) throws SQLException {
         Database database = new Database();
         Connection connection = database.getConnection();
@@ -107,7 +111,49 @@ public class Title extends HttpServlet {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM pract_types ORDER BY key_pract_pk");
         int i=0;
         while (resultSet.next()) {
+            if (!request.getParameter("name_pt"+i).equals(resultSet.getString("name_pt")))
+                update("UPDATE pract_types SET name_pt = '" + request.getParameter("name_pt" + i)
+                        + "' WHERE key_pract_pk = " + (i+1));
+            i++;
+        }
+        resultSet = statement.executeQuery("SELECT * FROM pract ORDER BY key_pract_pk");
+        i=0;
+        while (resultSet.next()) {
+            if (!request.getParameter("key_week_count"+i).equals(resultSet.getString("key_week_count")))
+                update("UPDATE pract SET key_week_count = " + request.getParameter("key_week_count" + i)
+                        + " WHERE key_pract_pk = " + (i+1));
+            i++;
+        }
+        statement.close();
+        connection.close();
+        resultSet.close();
+    }
 
+    /**
+     * Вносим изменения в таблицу Государственной Аттестации
+     */
+    private void placeStateAttestaion(HttpServletRequest request) throws SQLException{
+        Database database = new Database();
+        Connection connection = database.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM state_certification_types ORDER BY key_sc_pk");
+        int i=0;
+        while (resultSet.next()) {
+            if (!request.getParameter("form_sct"+i).equals(resultSet.getString("form_sct")))
+                update("UPDATE state_certification_types SET form_sct = '" + request.getParameter("form_sct" + i)
+                        + "' WHERE key_sc_pk = " + (i+1));
+            if (!request.getParameter("name_sct"+i).equals(resultSet.getString("name_sct")))
+                update("UPDATE state_certification_types SET name_sct = '" + request.getParameter("name_sct" + i)
+                        + "' WHERE key_sc_pk = " + (i+1));
+            i++;
+        }
+        resultSet = statement.executeQuery("SELECT * FROM state_certification ORDER BY key_sc_pk");
+        i=0;
+        while (resultSet.next()) {
+            if (!request.getParameter("semester_sc"+i).equals(resultSet.getString("semester_sc")))
+                update("UPDATE state_certification SET semester_sc = " + request.getParameter("semester_sc" + i)
+                        + " WHERE key_sc_pk = " + (i+1));
+            i++;
         }
         statement.close();
         connection.close();
@@ -128,6 +174,7 @@ public class Title extends HttpServlet {
      * @param row - строка запроса
      */
     private void update(String row){
+        System.out.println(row);
         Database database = new Database();
         Connection connection = database.getConnection();
         Statement statement;
@@ -141,7 +188,6 @@ public class Title extends HttpServlet {
         }catch (SQLException e){
             new RuntimeException(e);
         }
-
     }
 }
 

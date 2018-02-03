@@ -136,7 +136,6 @@ public class Titles {
             }
             table.closeRow();
         }
-
     }
 
     /**
@@ -200,9 +199,9 @@ public class Titles {
             int sem=4;
             for(int i = 0; i<practNames.size(); i++) {
                 table.openRow();
-                table.addField(practNames.get(i), 150);
-                table.addField(sem+"");
-                table.addField(pract.get(i));
+                table.addField(practNames.get(i), "name_pt"+i, 150);
+                table.add(sem+"");
+                table.addField(pract.get(i), "key_week_count"+i);
                 sem+=2;
                 table.closeRow();
             }
@@ -239,9 +238,9 @@ public class Titles {
                 state.add(resultSet.getString("semester_sc"));
             for(int i = 0; i<formSct.size(); i++) {
                 table.openRow();
-                table.addField(formSct.get(i), 250);
-                table.addField(nameSct.get(i), 250);
-                table.addField(state.get(i), 20);
+                table.addField(formSct.get(i), "form_sct"+i, 250);
+                table.addField(nameSct.get(i), "name_sct"+i, 250);
+                table.addField(state.get(i), "semester_sc"+i, 20);
                 table.closeRow();
             }
             resultSet.close();

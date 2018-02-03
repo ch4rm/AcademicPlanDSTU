@@ -18,12 +18,3 @@ public class Direct extends HttpServlet {
         }
     }
 }
-
-/*
-response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("title.jsp");
-        if (dispatcher != null) {
-            dispatcher.forward(request, response);
-        }
- */
