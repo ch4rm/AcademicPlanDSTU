@@ -23,11 +23,10 @@ public class Table {
     /**
      * Добавить ячейку
      * @param str - содержимое ячейки
-     * @param rowspan - атрибут html
      * @param colspan - атрибут html
      */
-    public void add(String str, int rowspan, int colspan){
-        formattedString.append("<td rowspan = \"" + rowspan + "\" colspan = \"" + colspan + "\">");
+    public void add(String str, int colspan){
+        formattedString.append("<td colspan = \"" + colspan + "\">");
         formattedString.append(str);
         formattedString.append("</td>");
     }
@@ -60,6 +59,14 @@ public class Table {
         formattedString.append("<input type=\"text\" name = \"" + name + "\" style=\"width: 20px\" class=\"text-field\" value=\"");
         formattedString.append(str);
         formattedString.append("\"></td>");
+    }
+
+    /**
+     * Задать вручную элементы таблицы
+     * @param str - содержимое
+     */
+    public void setRow(String str){
+        formattedString.append(str);
     }
 
     /**

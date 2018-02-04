@@ -1,8 +1,8 @@
 package org.scs.ap.content;
 
 import org.scs.ap.database.Database;
+import org.scs.ap.view.Config;
 import org.scs.ap.view.Table;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -11,15 +11,17 @@ import java.util.ArrayList;
  */
 public class Titles {
     private Database database;
+    private Config config;
     private String yearCreation;
     private String yearReception;
     private String qualification;
     private String termsEducation;
     private String lvlEducation;
     private String formEducation;
+    private String profiles;
     /** theory - теоретическое обучение; passingExam - сдача кредитов; session - сессия: vacation - каникулы:
      * practice - практика; ressearch - НИР; stateExam - государственный экзамен: finalWork - подотовка ВКР. */
-    private int theory[] = {0,0,0,0};
+    private int theory[] = new int[4];
     private int passingExam[] = new int[4];
     private int session[] = new int[4];
     private int vacation[] = new int[4];
@@ -28,8 +30,9 @@ public class Titles {
     private int stateExam[] = new int[4];
     private int finalWork[] = new int[4];
 
-    public Titles(Database database){
+    public Titles(Database database, Config config){
         this.database = database;
+        this.config = config;
         initial();
     }
 
@@ -51,6 +54,10 @@ public class Titles {
                 lvlEducation = resultSet.getString("lvl_education");
                 formEducation = resultSet.getString("form_education");
             }
+            resultSet = statement.executeQuery("SELECT * FROM profiles");
+            while (resultSet.next()) {
+                profiles = resultSet.getString("name_prof");
+            }
             resultSet.close();
             statement.close();
             connection.close();
@@ -69,7 +76,23 @@ public class Titles {
         Statement statement;
         try {
             statement = connection.createStatement();
-            genHead(table);
+            ArrayList<String> months;
+            months = config.getArrayXml("month");
+            table.openRow();
+            table.setRow("<td rowspan=\"4\" class=\"rotatable\">КУРС</td>");
+            table.add(months.get(0), 4);
+            table.add(months.get(1), 5);
+            table.add(months.get(2), 4);
+            table.add(months.get(3), 4);
+            table.add(months.get(4), 5);
+            table.add(months.get(5), 4);
+            table.add(months.get(6), 4);
+            table.add(months.get(7), 4);
+            table.add(months.get(8), 5);
+            table.add(months.get(9), 4);
+            table.add(months.get(10), 4);
+            table.add(months.get(11), 5);
+            table.closeRow();
             //Недели
             genWeek(table, "week_msa", statement);
             //Старт недели
@@ -117,7 +140,6 @@ public class Titles {
                 if(str.get(kurs)==null) {
                     table.addField("", "label_msa" + name);
                     theory[i]+=1;
-
                 }
                 else {
                     table.addField(str.get(kurs), "label_msa"+name);
@@ -145,7 +167,14 @@ public class Titles {
     public String getTimeBudgets() {
         Table table = new Table();
         int sumAll=0;
-        genHeadTimeBudget(table);
+        ArrayList<String> budget;
+        budget = config.getArrayXml("budget");
+        table.openRow();
+        String atribute="\theight: 120px;";
+        for(int i=0;i<10;i++) {
+            table.add(budget.get(i), atribute);
+        }
+        table.closeRow();
         for(int i=0; i<4; i++) {
             table.openRow();
             table.add((i+1)+"");
@@ -186,7 +215,13 @@ public class Titles {
         Connection connection = database.getConnection();
         Statement statement;
         try {
-            genHeadPracts(table);
+            ArrayList<String> practs;
+            practs = config.getArrayXml("headPractics");
+            table.openRow();
+            String atribute="\theight: 120px;";
+            for(int i=0;i<3;i++)
+                table.add(practs.get(i), atribute);
+            table.closeRow();
             statement = connection.createStatement();
             ArrayList<String> practNames = new ArrayList<>();
             ArrayList<String> pract = new ArrayList<>();
@@ -223,7 +258,12 @@ public class Titles {
         Connection connection = database.getConnection();
         Statement statement;
         try {
-            genHeadState(table);
+            ArrayList<String> states;
+            states = config.getArrayXml("headState");
+            table.openRow();
+            for(int i=0;i<3;i++)
+                table.add(states.get(i), "");
+            table.closeRow();
             statement = connection.createStatement();
             ArrayList<String> formSct = new ArrayList<>();
             ArrayList<String> nameSct = new ArrayList<>();
@@ -252,57 +292,6 @@ public class Titles {
         return table.toString();
     }
 
-    private void genHead(Table table){
-        table.openRow();
-        table.add("КУРС", 4, 1);
-        table.add("Сентябрь", 1, 4);
-        table.add("Октябрь", 1, 5);
-        table.add("Ноябрь", 1, 4);
-        table.add("Декабрь", 1, 4);
-        table.add("Январь", 1, 5);
-        table.add("Февраль", 1, 4);
-        table.add("Март", 1, 4);
-        table.add("Апрель", 1, 4);
-        table.add("Май", 1, 5);
-        table.add("Июнь", 1, 4);
-        table.add("Июль", 1, 4);
-        table.add("Август", 1, 5);
-        table.closeRow();
-    }
-
-    private void genHeadTimeBudget(Table table){
-        table.openRow();
-        String atribute="\theight: 120px;";
-        table.add("КУРС", atribute);
-        table.add("Теорет. обучение", atribute);
-        table.add("Сдача кредитов", atribute);
-        table.add("Экзамен. сессия", atribute);
-        table.add("Каникулы", atribute);
-        table.add("Практика", atribute);
-        table.add("Научно-исслед. работа (НИР)", atribute);
-        table.add("Гос. экзамен", atribute);
-        table.add("Подготовка ВКР", atribute);
-        table.add("Всего", atribute);
-        table.closeRow();
-    }
-
-    private void genHeadPracts(Table table){
-        table.openRow();
-        String atribute="\theight: 120px;";
-        table.add("Название практики", atribute);
-        table.add("Семестр", atribute);
-        table.add("Недели", atribute);
-        table.closeRow();
-    }
-
-    private void genHeadState(Table table){
-        table.openRow();
-        table.add("Название учебной дисциплины", "");
-        table.add("Форма государственной итоговой аттестации (экзамен, ВКР)", "");
-        table.add("Семестр", "");
-        table.closeRow();
-    }
-
     public String getYearCreations() {
         return yearCreation;
     }
@@ -320,5 +309,8 @@ public class Titles {
     }
     public String getFormEducation() {
         return formEducation;
+    }
+    public String getProfiles() {
+        return profiles;
     }
 }

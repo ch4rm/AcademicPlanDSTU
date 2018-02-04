@@ -79,6 +79,8 @@ body{
 /* ОТСТУПЫ */
 .content{
 	padding: 20px;
+	width: calc(100% - 40px);
+	height: calc(100% - 40px);
 }
 
 /* СКРОЛЛЫ ДЛЯ КОНТЕЙНЕРА */
@@ -121,6 +123,7 @@ body{
 }
 
 .title-table{
+	table-layout: fixed;
 	border-collapse: collapse;
 	margin: 0 auto;
 }
@@ -165,4 +168,14 @@ body{
 .save-button:hover {
 	background-color: #4CAF50;
 	color: white;
+}
+
+/* Перевёрнутый текст */
+.rotatable{
+	width: 20px;
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	transform: rotate(-90deg);
 }

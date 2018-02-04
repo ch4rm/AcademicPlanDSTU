@@ -55,6 +55,11 @@ public class Title extends HttpServlet {
             if (!request.getParameter("formEducation").equals(resultSet.getString("form_education")))
                 update("UPDATE titles SET form_education = '" + request.getParameter("formEducation") + "'");
         }
+        resultSet = statement.executeQuery("SELECT * FROM profiles");
+        while (resultSet.next()) {
+            if (!request.getParameter("name_prof").equals(resultSet.getString("name_prof")))
+                update("UPDATE profiles SET name_prof = '" + request.getParameter("name_prof")+"'");
+        }
         statement.close();
         connection.close();
         resultSet.close();

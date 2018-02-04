@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ТИТУЛ -->
+<title>
+    <!-- ГРАФИК УЧЕБНОГО ПРОЦЕССА -->
+    <shedulesAp>
+        <month>Сентябрь</month>
+        <month>Октябрь</month>
+        <month>Ноябрь</month>
+        <month>Декабрь</month>
+        <month>Январь</month>
+        <month>Февраль</month>
+        <month>Март</month>
+        <month>Апрель</month>
+        <month>Май</month>
+        <month>Июнь</month>
+        <month>Июль</month>
+        <month>Август</month>
+    </shedulesAp>
+    <!-- СВОДНЫЕ ДАННЫЕ О БЮДЖЕТЕ ВРЕМЕНИ -->
+    <timeBudget>
+        <budget>КУРС</budget>
+        <budget>Теорет. обучение</budget>
+        <budget>Сдача кредитов</budget>
+        <budget>Экзамен. сессия</budget>
+        <budget>Каникулы</budget>
+        <budget>Практика</budget>
+        <budget>Научно-исслед. работа (НИР)</budget>
+        <budget>Гос. экзамен</budget>
+        <budget>Подготовка ВКР</budget>
+        <budget>Всего</budget>
+    </timeBudget>
+    <!-- ПРАКТИКА -->
+    <practics>
+        <headPractics>Название практики</headPractics>
+        <headPractics>Семестр</headPractics>
+        <headPractics>Недели</headPractics>
+    </practics>
+    <!-- ГОСУДАРСТВЕННАЯ ИТОГОВАЯ АТТЕСТАЦИЯ -->
+    <stateSertification>
+        <headState>Название учебной дисциплины</headState>
+        <headState>Форма государственной итоговой аттестации (экзамен, ВКР)</headState>
+        <headState>Семестр</headState>
+    </stateSertification>
+</title>
+

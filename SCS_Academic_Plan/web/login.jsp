@@ -12,7 +12,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <table style="font-size: 14pt;">
+                        <table class = "input-table">
                             <tr>
                                 <td>Логин</td>
                                 <td style="padding-left: 20px;"><input type="text" name="login" class="text-field"></td>
