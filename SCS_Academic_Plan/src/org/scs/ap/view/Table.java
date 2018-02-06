@@ -61,6 +61,13 @@ public class Table {
         formattedString.append("\"></td>");
     }
 
+    public String getField(String str, String name, String style){
+        String s;
+        s="<input type=\"text\" name=\"" + name + "\" class=\"text-field\" value=\""
+                + str + "\" style=\"" + style + "\">";
+        return s;
+    }
+
     /**
      * Задать вручную элементы таблицы
      * @param str - содержимое

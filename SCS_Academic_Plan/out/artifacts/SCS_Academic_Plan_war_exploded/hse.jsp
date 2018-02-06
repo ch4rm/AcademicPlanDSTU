@@ -19,21 +19,32 @@
 <%@ include file="top-container.jsp" %>
 <form>
     <div style="height: 1100px">
-        <table style="width: 100%; text-align: center;" class = "title-table">
+        <table style="width: 100%; text-align: left;" class = "title-table">
             <tr>
-                <td rowspan="5">№ п/п</td>
-                <td rowspan="5" style="width: 150px">Название дисцпилины</td>
-                <td rowspan="5" class="rotatable">Шифр кафедры</td>
-                <td rowspan="5" class="rotatable">з.е</td>
-                <td rowspan="5" class="rotatable">Экзамены</td>
-                <td rowspan="5" class="rotatable">Зачёты</td>
-                <td rowspan="5" class="rotatable">Общий объём</td>
+                <td rowspan="4" style="width: 90px">№ п/п</td>
+                <td rowspan="4" style="width: 300px">Название дисципилины</td>
+                <td rowspan="4" style="width: 30px" class="rotatable">Шифр кафедры</td>
+                <td rowspan="4" class="rotatable">з.е</td>
+                <td rowspan="4" class="rotatable">Экзамены</td>
+                <td rowspan="4" class="rotatable">Зачёты</td>
+                <td rowspan="4" class="rotatable">Общий объём</td>
                 <td colspan="7">Часы</td>
                 <td colspan="32">
                     Распределение по курсам, семестрам и неделям
                 </td>
             </tr>
             <%=hse.headTable()%>
+            <tr>
+                <td colspan="46"><%=hse.getCycle()%></td>
+            </tr>
+            <tr>
+                <td colspan="46" style="font-weight:bolder;"><%=hse.getParts(0)%></td>
+            </tr>
+            <%=hse.getSubjects(0)%>
+            <tr>
+                <td colspan="46" style="font-weight:bolder;"><%=hse.getParts(1)%></td>
+            </tr>
+            <%=hse.getSubjects(1)%>
         </table>
     </div>
     <div style="width: 1800px; height: 100px; bottom:0;">
