@@ -16,16 +16,28 @@ public class HSE {
     private Database database;
     private String cycle="";
     private ArrayList<String> department = new ArrayList<>();
+    ArrayList<String> key_subject_fk = new ArrayList<>();
+    ArrayList<String> course_num_sa = new ArrayList<>();
+    ArrayList<String> semester_num_sa = new ArrayList<>();
+    ArrayList<String> hour_lec_sa = new ArrayList<>();
+    ArrayList<String> hour_lab_sa = new ArrayList<>();
+    ArrayList<String> hour_prac_sa = new ArrayList<>();
+    ArrayList<String> hour_self_sa = new ArrayList<>();
+    ArrayList<String> hour_exam_sa = new ArrayList<>();
 
     public HSE(Database database){
         this.database = database;
         try {
             department();
+            subjectAssigment();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Имя цикла (Б1)
+     */
     public String getCycle() throws SQLException {
         String s = "";
         Table table = new Table();
@@ -43,6 +55,9 @@ public class HSE {
         return s;
     }
 
+    /**
+     * Имя части (Б1.Б)
+     */
     public String getParts(int Part) throws SQLException{
         String s;
         Table table = new Table();
@@ -63,6 +78,9 @@ public class HSE {
         return s;
     }
 
+    /**
+     * Предметы (Б1.Б1 История)
+     */
     public String getSubjects(int keyParts) throws SQLException{
         String s="";
         keyParts++;
@@ -84,17 +102,47 @@ public class HSE {
                     + "</td><td></td><td>" + table.getField(resultSet.getString("pract_s"), "ksr_s"+i,"width:20px")
                     + "</td><td>" + table.getField(resultSet.getString("pract_s"), "bsr_s"+i,"width:20px")
                     + "</td>";
+            s+=getSubjectAssigment(s, i);
             for(int j=0;j<32;j++)
                 s+="<td></td>";
             s+="</tr>";
             i++;
         }
+
         connection.close();
         statement.close();
         resultSet.close();
         return s;
     }
 
+    private String getSubjectAssigment(String s, int i){
+        ArrayList<Integer> index = new ArrayList<>();
+        s+="<td>";
+        return s;
+    }
+
+    private void subjectAssigment() throws SQLException{
+        Connection connection = database.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM subject_assignment ORDER BY key_subject_fk");
+        while (resultSet.next()){
+            key_subject_fk.add(resultSet.getString("key_subject_fk"));
+            course_num_sa.add(resultSet.getString("course_num_sa"));
+            semester_num_sa.add(resultSet.getString("semester_num_sa"));
+            hour_lec_sa.add(resultSet.getString("hour_lec_sa"));
+            hour_lab_sa.add(resultSet.getString("hour_lab_sa"));
+            hour_prac_sa.add(resultSet.getString("hour_prac_sa"));
+            hour_self_sa.add(resultSet.getString("hour_self_sa"));
+            hour_exam_sa.add(resultSet.getString("hour_exam_sa"));
+        }
+        connection.close();
+        statement.close();
+        resultSet.close();
+    }
+
+    /**
+     * Шифр кафедры
+     */
     private void department() throws SQLException{
         Connection connection = database.getConnection();
         Statement statement = connection.createStatement();
@@ -106,6 +154,9 @@ public class HSE {
         resultSet.close();
     }
 
+    /**
+     * Заголовок ГСЭ
+     */
     public String headTable(){
         String s="";
         s+="<tr>";
