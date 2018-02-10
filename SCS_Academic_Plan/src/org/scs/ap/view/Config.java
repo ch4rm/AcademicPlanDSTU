@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by User on 04.02.2018.
+ * Created by Shishko.Arthur on 04.02.2018.
  */
 public class Config{
     private Document document;

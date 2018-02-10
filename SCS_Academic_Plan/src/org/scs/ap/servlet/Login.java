@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 /**
- * Created by User on 14.01.2018.
+ * Created by Shishko.Arthur on 14.01.2018.
  */
 @WebServlet(name = "Login")
 public class Login extends HttpServlet {

@@ -35,14 +35,14 @@
             </tr>
             <%=hse.headTable()%>
             <tr>
-                <td colspan="46"><%=hse.getCycle()%></td>
+                <td colspan="46" style="background: #E1E5FF"><%=hse.getCycle()%></td>
             </tr>
             <tr>
-                <td colspan="46" style="font-weight:bolder;"><%=hse.getParts(0)%></td>
+                <td colspan="46" style="font-weight:bolder; background: #E1E5FF"><%=hse.getParts(0)%></td>
             </tr>
             <%=hse.getSubjects(0)%>
             <tr>
-                <td colspan="46" style="font-weight:bolder;"><%=hse.getParts(1)%></td>
+                <td colspan="46" style="font-weight:bolder; background: #E1E5FF"><%=hse.getParts(1)%></td>
             </tr>
             <%=hse.getSubjects(1)%>
         </table>

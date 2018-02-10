@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 
 /**
- * Created by User on 14.01.2018.
+ * Created by Shishko.Arthur on 14.01.2018.
  */
 @WebServlet(name = "Title")
 public class Title extends HttpServlet {

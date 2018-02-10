@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * Created by User on 06.01.2018.
+ * Created by Shishko.Arthur on 06.01.2018.
  */
 public class Titles {
     private Database database;
