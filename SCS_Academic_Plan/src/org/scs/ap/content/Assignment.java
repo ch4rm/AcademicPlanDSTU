@@ -11,18 +11,18 @@ import java.util.ArrayList;
 /**
  * Created by Shishko.Arthur on 03.02.2018.
  */
-public class HSE {
+public class Assignment {
     private Connection connection;
     private String cycle="";
     private ArrayList<String> department = new ArrayList<>();
     private ArrayList<Subject> subjects = new ArrayList<>();
     private int index=0;
 
-    public HSE(Connection connection){
+    public Assignment(Connection connection, int key_type_fk){
         this.connection = connection;
         try {
             department();
-            subjectAssigment(1);
+            subjectAssigment(key_type_fk);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -31,11 +31,11 @@ public class HSE {
     /**
      * Имя цикла (Б1)
      */
-    public String getCycle() throws SQLException {
+    public String getCycle(int cyclePk) throws SQLException {
         String s = "";
         Table table = new Table();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM cycles WHERE key_cycle_pk = 1");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM cycles WHERE key_cycle_pk = "+cyclePk);
         while (resultSet.next()) {
             cycle = resultSet.getString("key_cycle_let");
             s = table.getField(cycle, "key_cycle_let", "width:80px; font-weight:bolder; font-size:14pt; background: #dbe9f8")
@@ -50,21 +50,20 @@ public class HSE {
     /**
      * Имя части (Б1.Б)
      */
-    public String getParts(int Part) throws SQLException{
-
+    public String getParts(int part) throws SQLException{
         String s;
         Table table = new Table();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM parts WHERE key_cycle_fk = 1");
-        ArrayList<String> keyPartsLet = new ArrayList<>();
-        ArrayList<String> nameP = new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM parts WHERE key_parts_pk = "+part);
+        String keyPartsLet="";
+        String nameP="";
         while (resultSet.next()){
-            keyPartsLet.add(resultSet.getString("key_parts_let"));
-            nameP.add(resultSet.getString("name_p"));
+            keyPartsLet=resultSet.getString("key_parts_let");
+            nameP=resultSet.getString("name_p");
         }
-        s= cycle + "." + table.getField(keyPartsLet.get(Part-1), "key_parts_let."+Part, "width:50px; font-weight:bold;font-size:12pt; " +
+        s= cycle + "." + table.getField(keyPartsLet, "key_parts_let."+part, "width:50px; font-weight:bold;font-size:12pt; " +
                 "background: #dbe9f8")
-                + table.getField(nameP.get(Part-1), "name_p."+Part, "width:600px; font-weight:bold;font-size:12pt; " +
+                + table.getField(nameP, "name_p."+part, "width:600px; font-weight:bold;font-size:12pt; " +
                 "background: #dbe9f8");
         statement.close();
         resultSet.close();
@@ -108,7 +107,7 @@ public class HSE {
             result[9]+=bsr;
             s+="<tr><td>" + cycle + "."              + resultSet.getString("key_subject") + "</td>"
                     + "<td>"                         + table.getField(name, "name_s."+keypk,"width:300px")
-                    + "</td><td>"                    + table.getField(department.get(keydepfk+1),"key_department_fk."+index,"width:30px")
+                    + "</td><td>"                    + table.getField(department.get(keydepfk+1),"key_department_fk."+index,"width:40px")
                     + "</td><td></td><td>"           + table.getField(exams+"", "exams_s."+keypk,"width:20px")
                     + "</td><td>"                    + table.getField(setoff+"", "setoff_s."+keypk,"width:20px")
                     + "</td><td>"+all+"</td><td>"
@@ -139,7 +138,7 @@ public class HSE {
         String style;
         int r = 10;
         boolean color=true;
-        System.out.println("fk="+ subjects.get(index).getSubjectFk()+" SizeSemester=" +subjects.get(index).getSizeSemester());
+        //System.out.println("fk="+ subjects.get(index).getSubjectFk()+" SizeSemester=" +subjects.get(index).getSizeSemester());
         //int sizeSemester = subjects.get(index).getSizeSemester();
         //Количество возможных семестров
         for(int i=1;i<9;i++) {
@@ -227,19 +226,6 @@ public class HSE {
             subjects.get(i-1).addLab(resultSet.getInt("hour_lab_sa"));
             subjects.get(i-1).addPrac(resultSet.getInt("hour_prac_sa"));
             subjects.get(i-1).addSelf(resultSet.getInt("hour_self_sa"));
-            /*if(resultSet.getInt("key_subject_fk")==i){
-            }
-            else{
-                i++;
-                subjects.add(new Subject(i));
-            }
-            subjects.get(i-1).addCourse(resultSet.getInt("course_num_sa"));
-            subjects.get(i-1).addSemester(resultSet.getInt("semester_num_sa"));
-            subjects.get(i-1).addLec(resultSet.getInt("hour_lec_sa"));
-            subjects.get(i-1).addLab(resultSet.getInt("hour_lab_sa"));
-            subjects.get(i-1).addPrac(resultSet.getInt("hour_prac_sa"));
-            subjects.get(i-1).addSelf(resultSet.getInt("hour_self_sa"));*/
-
         }
         statement.close();
         resultSet.close();

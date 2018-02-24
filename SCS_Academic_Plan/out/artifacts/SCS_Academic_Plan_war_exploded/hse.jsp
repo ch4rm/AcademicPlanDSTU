@@ -1,4 +1,4 @@
-<%@ page import="org.scs.ap.content.HSE" %>
+<%@ page import="org.scs.ap.content.Assignment" %>
 <%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="java.sql.Connection" %><%--
   Created by IntelliJ IDEA.
@@ -11,7 +11,7 @@
 <%
     Database database = new Database();
     Connection connection = database.getConnection();
-    HSE hse = new HSE(connection);
+    Assignment hse = new Assignment(connection, 1);
 %>
 <html>
 <head>
@@ -25,7 +25,7 @@
             <tr>
                 <td rowspan="4" style="width: 90px">№ п/п</td>
                 <td rowspan="4" style="width: 300px">Название дисципилины</td>
-                <td rowspan="4" style="width: 30px" class="rotatable">Шифр кафедры</td>
+                <td rowspan="4" style="width: 40px" class="rotatable">Шифр кафедры</td>
                 <td rowspan="4" class="rotatable">з.е</td>
                 <td rowspan="4" class="rotatable">Экзамены</td>
                 <td rowspan="4" class="rotatable">Зачёты</td>
@@ -37,7 +37,7 @@
             </tr>
             <%=hse.headTable()%>
             <tr>
-                <td colspan="46" style="background: #dbe9f8"><%=hse.getCycle()%></td>
+                <td colspan="46" style="background: #dbe9f8"><%=hse.getCycle(1)%></td>
             </tr>
             <tr>
                 <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=hse.getParts(1)%></td>
