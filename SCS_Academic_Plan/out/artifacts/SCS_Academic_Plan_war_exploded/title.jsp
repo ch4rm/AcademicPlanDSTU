@@ -1,10 +1,12 @@
 <%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="org.scs.ap.content.Titles" %>
 <%@ page import="org.scs.ap.view.Config" %>
+<%@ page import="java.sql.Connection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  Database database = new Database();
+    Connection connection = database.getConnection();
     Config cfg = new Config();
-    Titles titles = new Titles(database, cfg);
+    Titles titles = new Titles(connection, cfg);
 %>
 <html>
 <head>
@@ -96,5 +98,6 @@
     <div style="width: 1800px; height: 100px; bottom:0;">
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>
     </div>
+    <%connection.close();%>
 </form>
 <%@ include file="bottom-container.jsp" %>

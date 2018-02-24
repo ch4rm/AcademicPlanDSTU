@@ -33,4 +33,5 @@ public class Subject {
     public int getSelf(int i){return hour_self_sa.get(i);}
 
     public int getSizeSemester(){return semester_num_sa.size();}
+    public int getSubjectFk(){return key_subject_fk;}
 }

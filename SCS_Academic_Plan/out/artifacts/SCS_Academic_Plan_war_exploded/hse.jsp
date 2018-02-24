@@ -1,5 +1,6 @@
 <%@ page import="org.scs.ap.content.HSE" %>
-<%@ page import="org.scs.ap.database.Database" %><%--
+<%@ page import="org.scs.ap.database.Database" %>
+<%@ page import="java.sql.Connection" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 14.01.2018
@@ -9,7 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Database database = new Database();
-    HSE hse = new HSE(database);
+    Connection connection = database.getConnection();
+    HSE hse = new HSE(connection);
 %>
 <html>
 <head>
@@ -19,7 +21,7 @@
 <%@ include file="top-container.jsp" %>
 <form>
     <div style="height: 1100px">
-        <table style="width: 100%; text-align: left;" class = "title-table">
+        <table style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
             <tr>
                 <td rowspan="4" style="width: 90px">№ п/п</td>
                 <td rowspan="4" style="width: 300px">Название дисципилины</td>
@@ -35,20 +37,21 @@
             </tr>
             <%=hse.headTable()%>
             <tr>
-                <td colspan="46" style="background: #E1E5FF"><%=hse.getCycle()%></td>
+                <td colspan="46" style="background: #dbe9f8"><%=hse.getCycle()%></td>
             </tr>
             <tr>
-                <td colspan="46" style="font-weight:bolder; background: #E1E5FF"><%=hse.getParts(0)%></td>
-            </tr>
-            <%=hse.getSubjects(0)%>
-            <tr>
-                <td colspan="46" style="font-weight:bolder; background: #E1E5FF"><%=hse.getParts(1)%></td>
+                <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=hse.getParts(1)%></td>
             </tr>
             <%=hse.getSubjects(1)%>
+            <tr>
+                <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=hse.getParts(2)%></td>
+            </tr>
+            <%=hse.getSubjects(2)%>
         </table>
     </div>
     <div style="width: 1800px; height: 100px; bottom:0;">
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>
     </div>
+    <% connection.close(); %>
 </form>
 <%@ include file="bottom-container.jsp" %>

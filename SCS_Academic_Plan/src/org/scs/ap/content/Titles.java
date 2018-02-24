@@ -1,6 +1,5 @@
 package org.scs.ap.content;
 
-import org.scs.ap.database.Database;
 import org.scs.ap.view.Config;
 import org.scs.ap.view.Table;
 import java.sql.*;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
  * Created by Shishko.Arthur on 06.01.2018.
  */
 public class Titles {
-    private Database database;
+    private Connection connection;
     private Config config;
     private String yearCreation;
     private String yearReception;
@@ -30,8 +29,8 @@ public class Titles {
     private int stateExam[] = new int[4];
     private int finalWork[] = new int[4];
 
-    public Titles(Database database, Config config){
-        this.database = database;
+    public Titles(Connection connection, Config config){
+        this.connection = connection;
         this.config = config;
         initial();
     }
@@ -40,7 +39,6 @@ public class Titles {
      * Заполняем поля из базы сразу при запуске title
      */
     public void initial() {
-        Connection connection = database.getConnection();
         Statement statement;
         ResultSet resultSet;
         try {
@@ -60,7 +58,6 @@ public class Titles {
             }
             resultSet.close();
             statement.close();
-            connection.close();
         }catch (SQLException e){
             new RuntimeException(e);
         }
@@ -72,7 +69,6 @@ public class Titles {
      */
     public String getScheduleProcess(){
         Table table = new Table(100);
-        Connection connection = database.getConnection();
         Statement statement;
         try {
             statement = connection.createStatement();
@@ -102,7 +98,6 @@ public class Titles {
             //Курсы
             genLabelMsa(table, statement);
             statement.close();
-            connection.close();
         }catch (SQLException e){
             new RuntimeException(e);
         }
@@ -212,7 +207,6 @@ public class Titles {
      */
     public String getPractics(){
         Table table = new Table();
-        Connection connection = database.getConnection();
         Statement statement;
         try {
             ArrayList<String> practs;
@@ -242,7 +236,6 @@ public class Titles {
             }
             resultSet.close();
             statement.close();
-            connection.close();
         }catch (SQLException e){
             new RuntimeException(e);
         }
@@ -255,7 +248,6 @@ public class Titles {
      */
     public String genStateAtestation(){
         Table table = new Table();
-        Connection connection = database.getConnection();
         Statement statement;
         try {
             ArrayList<String> states;
@@ -285,7 +277,6 @@ public class Titles {
             }
             resultSet.close();
             statement.close();
-            connection.close();
         }catch (SQLException e){
             new RuntimeException(e);
         }
