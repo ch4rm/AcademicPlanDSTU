@@ -9,6 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    String backColorHead="background: #CEDFF2";
     Database database = new Database();
     Connection connection = database.getConnection();
     Assignment hse = new Assignment(connection, 1);
@@ -20,8 +21,8 @@
 </head>
 <%@ include file="top-container.jsp" %>
 <form>
-    <div style="height: 1100px">
-        <table style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
+    <div id="cont-main-block" style="height: 1100px">
+        <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
             <tr>
                 <td rowspan="4" style="width: 90px">№ п/п</td>
                 <td rowspan="4" style="width: 300px">Название дисципилины</td>
@@ -37,14 +38,14 @@
             </tr>
             <%=hse.headTable()%>
             <tr>
-                <td colspan="46" style="background: #dbe9f8"><%=hse.getCycle(1)%></td>
+                <td colspan="46" style="<%=backColorHead%>"><%=hse.getCycle(1)%></td>
             </tr>
             <tr>
-                <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=hse.getParts(1)%></td>
+                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=hse.getParts(1)%></td>
             </tr>
             <%=hse.getSubjects(1)%>
             <tr>
-                <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=hse.getParts(2)%></td>
+                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=hse.getParts(2)%></td>
             </tr>
             <%=hse.getSubjects(2)%>
         </table>

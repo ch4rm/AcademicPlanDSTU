@@ -63,44 +63,42 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Assignment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Assignment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/scs/ap/content/Assignment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
-              <caret line="105" column="27" lean-forward="true" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
+            <state relative-caret-position="-85">
+              <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1519510659524" expanded="true" signature="1064:1105" ph="SELECT * FRO... cycles" />
-                <marker date="1519510659524" expanded="true" signature="1064:1106" ph="SELECT * FRO... cycles" />
-                <marker date="1519510659524" expanded="true" signature="1864:1904" ph="SELECT * FRO... parts" />
-                <marker date="1519510659524" expanded="true" signature="1864:1905" ph="SELECT * FRO... parts" />
-                <marker date="1519510659524" expanded="true" signature="2834:2877" ph="SELECT * FRO... subjects" />
-                <marker date="1519510659524" expanded="true" signature="2834:2878" ph="SELECT * FRO... subjects" />
-                <marker date="1519510659524" expanded="true" signature="2834:2918" ph="SELECT * FRO... subjects" />
-                <marker date="1519510659524" expanded="true" signature="9296:9329" ph="SELECT * FRO... subject_assignment" />
-                <marker date="1519510659524" expanded="true" signature="9296:9348" ph="SELECT * FRO... subject_assignment" />
-                <marker date="1519510659524" expanded="true" signature="9296:9407" ph="SELECT * FRO... subject_assignment" />
-                <marker date="1519510659524" expanded="true" signature="9296:9409" ph="SELECT * FRO... subject_assignment" />
-                <marker date="1519510659524" expanded="true" signature="10473:10499" ph="SELECT * FRO... subjects" />
-                <marker date="1519510659524" expanded="true" signature="10473:10525" ph="SELECT * FRO... subjects" />
+                <element signature="e#696#697#0" expanded="true" />
+                <element signature="e#741#742#0" expanded="true" />
+                <marker date="1519567613244" expanded="true" signature="1526:1567" ph="SELECT * FRO... cycles" />
+                <marker date="1519567613244" expanded="true" signature="1526:1568" ph="SELECT * FRO... cycles" />
+                <marker date="1519567613244" expanded="true" signature="2313:2353" ph="SELECT * FRO... parts" />
+                <marker date="1519567613244" expanded="true" signature="2313:2354" ph="SELECT * FRO... parts" />
+                <marker date="1519567613244" expanded="true" signature="3267:3310" ph="SELECT * FRO... subjects" />
+                <marker date="1519567613244" expanded="true" signature="3267:3311" ph="SELECT * FRO... subjects" />
+                <marker date="1519567613244" expanded="true" signature="3267:3351" ph="SELECT * FRO... subjects" />
+                <marker date="1519567613244" expanded="true" signature="9721:9754" ph="SELECT * FRO... subject_assignment" />
+                <marker date="1519567613244" expanded="true" signature="9721:9773" ph="SELECT * FRO... subject_assignment" />
+                <marker date="1519567613244" expanded="true" signature="9721:9832" ph="SELECT * FRO... subject_assignment" />
+                <marker date="1519567613244" expanded="true" signature="9721:9834" ph="SELECT * FRO... subject_assignment" />
+                <marker date="1519567613244" expanded="true" signature="10898:10924" ph="SELECT * FRO... subjects" />
+                <marker date="1519567613244" expanded="true" signature="10898:10950" ph="SELECT * FRO... subjects" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hse.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hse.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/hse.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+            <state relative-caret-position="187">
+              <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="45" />
               <folding>
-                <element signature="e#873#892#0#HTML" expanded="true" />
-                <element signature="e#936#956#0#HTML" expanded="true" />
-                <element signature="e#1015#1034#0#HTML" expanded="true" />
-                <element signature="e#1587#1614#0#HTML" expanded="true" />
-                <element signature="e#1709#1756#0#HTML" expanded="true" />
-                <element signature="e#1887#1934#0#HTML" expanded="true" />
-                <element signature="e#2052#2099#0#HTML" expanded="true" />
+                <element signature="e#1672#1698#0#HTML" expanded="true" />
+                <element signature="e#1793#1839#0#HTML" expanded="true" />
+                <element signature="e#1970#2016#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,12 +107,82 @@
       <file leaf-file-name="mns.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/mns.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            <state relative-caret-position="425">
+              <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding>
-                <element signature="e#874#893#0#HTML" expanded="true" />
-                <element signature="e#937#957#0#HTML" expanded="true" />
+                <element signature="e#1178#1197#0#HTML" expanded="true" />
+                <element signature="e#1750#1776#0#HTML" expanded="true" />
+                <element signature="e#1871#1917#0#HTML" expanded="true" />
+                <element signature="e#2048#2094#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prof.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/prof.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+              <folding>
+                <element signature="e#921#943#0#HTML" expanded="true" />
+                <element signature="e#976#1031#0#HTML" expanded="true" />
+                <element signature="e#1246#1265#0#HTML" expanded="true" />
+                <element signature="e#1819#1845#0#HTML" expanded="true" />
+                <element signature="e#1941#1987#0#HTML" expanded="true" />
+                <element signature="e#2120#2166#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="top-container.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/top-container.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-78">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <folding>
+                <marker date="1519567708685" expanded="true" signature="1624:1652" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="title.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/title.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-646">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Titles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/scs/ap/content/Titles.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3954">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding>
+                <marker date="1519395309768" expanded="true" signature="1483:1503" ph="SELECT * FRO... titles" />
+                <marker date="1519395309768" expanded="true" signature="2030:2052" ph="SELECT * FRO... profiles" />
+                <marker date="1519395309768" expanded="true" signature="3917:3978" ph="SELECT * FRO... matrix_schedules_ap" />
+                <marker date="1519395309768" expanded="true" signature="4449:4510" ph="SELECT * FRO... matrix_schedules_ap" />
+                <marker date="1519395309768" expanded="true" signature="8157:8204" ph="SELECT * FRO... pract_types" />
+                <marker date="1519395309768" expanded="true" signature="8356:8397" ph="SELECT * FRO... pract" />
+                <marker date="1519395309768" expanded="true" signature="9760:9818" ph="SELECT * FRO... state_certification_types" />
+                <marker date="1519395309768" expanded="true" signature="10046:10098" ph="SELECT * FRO... state_certification" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/styles/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="72" column="18" lean-forward="true" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,8 +193,8 @@
             <state relative-caret-position="272">
               <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
-                <element signature="e#593#594#0" expanded="false" />
-                <element signature="e#643#644#0" expanded="false" />
+                <element signature="e#593#594#0" expanded="true" />
+                <element signature="e#643#644#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,9 +205,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -166,7 +232,6 @@
         <option value="$PROJECT_DIR$/src/org/scs/ap/database/Database.java" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/SQLExec.java" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/Titles.java" />
-        <option value="$PROJECT_DIR$/web/top-container.jsp" />
         <option value="$PROJECT_DIR$/web/bottom-container.jsp" />
         <option value="$PROJECT_DIR$/web/old.jsp" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/HTML.java" />
@@ -178,7 +243,6 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/servlet-text.xml" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/Table.java" />
-        <option value="$PROJECT_DIR$/web/styles/style.css" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/servlet/Title.java" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/Config.java" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/servlet/Login.java" />
@@ -187,9 +251,12 @@
         <option value="$PROJECT_DIR$/src/org/scs/ap/content/Titles.java" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/view/Subject.java" />
         <option value="$PROJECT_DIR$/src/org/scs/ap/content/HSE.java" />
+        <option value="$PROJECT_DIR$/web/styles/style.css" />
         <option value="$PROJECT_DIR$/web/mns.jsp" />
-        <option value="$PROJECT_DIR$/src/org/scs/ap/content/Assignment.java" />
+        <option value="$PROJECT_DIR$/web/prof.jsp" />
         <option value="$PROJECT_DIR$/web/hse.jsp" />
+        <option value="$PROJECT_DIR$/src/org/scs/ap/content/Assignment.java" />
+        <option value="$PROJECT_DIR$/web/top-container.jsp" />
       </list>
     </option>
   </component>
@@ -1013,11 +1080,12 @@
       <workItem from="1519486838473" duration="15051000" />
       <workItem from="1519504632874" duration="3879000" />
       <workItem from="1519509451687" duration="1370000" />
+      <workItem from="1519561615101" duration="6534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171626000" />
+    <option name="totallyTimeSpent" value="178160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1042,12 +1110,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10570825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25264272" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1055,6 +1122,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1249,13 +1317,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/scs/ap/view/HTML.java" />
-    <entry file="file://$PROJECT_DIR$/web/prof.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/summary.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1283,23 +1344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/styles/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="35" lean-forward="false" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/top-container.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-          <folding>
-            <marker date="1515953820000" expanded="true" signature="1259:1287" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1332,9 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1342,9 +1383,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1352,46 +1390,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/styles/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="72" column="18" lean-forward="true" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/scs/ap/view/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding>
-            <marker date="1518274391477" expanded="true" signature="1445:1465" ph="SELECT * FRO... titles" />
-            <marker date="1518274391477" expanded="true" signature="2803:2825" ph="SELECT * FRO... profiles" />
-            <marker date="1518274391477" expanded="true" signature="3538:3599" ph="SELECT * FRO... matrix_schedules_ap" />
-            <marker date="1518274391477" expanded="true" signature="4561:4622" ph="SELECT * FRO... matrix_schedules_ap" />
-            <marker date="1518274391477" expanded="true" signature="5839:5886" ph="SELECT * FRO... pract_types" />
-            <marker date="1518274391477" expanded="true" signature="6264:6305" ph="SELECT * FRO... pract" />
-            <marker date="1518274391477" expanded="true" signature="7124:7182" ph="SELECT * FRO... state_certification_types" />
-            <marker date="1518274391477" expanded="true" signature="7841:7893" ph="SELECT * FRO... state_certification" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#643#644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/scs/ap/view/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/mns.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding>
+            <element signature="e#1178#1197#0#HTML" expanded="true" />
+            <element signature="e#1750#1776#0#HTML" expanded="true" />
+            <element signature="e#1871#1917#0#HTML" expanded="true" />
+            <element signature="e#2048#2094#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hse.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="45" />
+          <folding>
+            <element signature="e#1672#1698#0#HTML" expanded="true" />
+            <element signature="e#1793#1839#0#HTML" expanded="true" />
+            <element signature="e#1970#2016#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/top-container.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding>
+            <marker date="1519567708685" expanded="true" signature="1624:1652" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/title.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="100" column="25" lean-forward="false" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+        <state relative-caret-position="-646">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/scs/ap/content/Titles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="-3954">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="e#10754#10755#0" expanded="false" />
-            <element signature="e#10789#10790#0" expanded="false" />
-            <element signature="e#10828#10829#0" expanded="false" />
-            <element signature="e#10864#10865#0" expanded="false" />
-            <element signature="e#10903#10904#0" expanded="false" />
-            <element signature="e#10939#10940#0" expanded="false" />
-            <element signature="e#10979#10980#0" expanded="false" />
-            <element signature="e#11016#11017#0" expanded="false" />
-            <element signature="e#11054#11055#0" expanded="false" />
-            <element signature="e#11089#11090#0" expanded="false" />
-            <element signature="e#11128#11129#0" expanded="false" />
-            <element signature="e#11164#11165#0" expanded="false" />
-            <element signature="e#11198#11199#0" expanded="false" />
-            <element signature="e#11229#11230#0" expanded="false" />
             <marker date="1519395309768" expanded="true" signature="1483:1503" ph="SELECT * FRO... titles" />
             <marker date="1519395309768" expanded="true" signature="2030:2052" ph="SELECT * FRO... profiles" />
             <marker date="1519395309768" expanded="true" signature="3917:3978" ph="SELECT * FRO... matrix_schedules_ap" />
@@ -1404,73 +1480,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/scs/ap/view/Config.java">
+    <entry file="file://$PROJECT_DIR$/web/prof.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="75">
+          <caret line="13" column="45" lean-forward="false" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
           <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/scs/ap/view/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <element signature="e#593#594#0" expanded="false" />
-            <element signature="e#643#644#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/mns.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
-          <folding>
-            <element signature="e#874#893#0#HTML" expanded="true" />
-            <element signature="e#937#957#0#HTML" expanded="true" />
+            <element signature="e#921#943#0#HTML" expanded="true" />
+            <element signature="e#976#1031#0#HTML" expanded="true" />
+            <element signature="e#1246#1265#0#HTML" expanded="true" />
+            <element signature="e#1819#1845#0#HTML" expanded="true" />
+            <element signature="e#1941#1987#0#HTML" expanded="true" />
+            <element signature="e#2120#2166#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/scs/ap/content/Assignment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="105" column="27" lean-forward="true" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
+        <state relative-caret-position="-85">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1519510659524" expanded="true" signature="1064:1105" ph="SELECT * FRO... cycles" />
-            <marker date="1519510659524" expanded="true" signature="1064:1106" ph="SELECT * FRO... cycles" />
-            <marker date="1519510659524" expanded="true" signature="1864:1904" ph="SELECT * FRO... parts" />
-            <marker date="1519510659524" expanded="true" signature="1864:1905" ph="SELECT * FRO... parts" />
-            <marker date="1519510659524" expanded="true" signature="2834:2877" ph="SELECT * FRO... subjects" />
-            <marker date="1519510659524" expanded="true" signature="2834:2878" ph="SELECT * FRO... subjects" />
-            <marker date="1519510659524" expanded="true" signature="2834:2918" ph="SELECT * FRO... subjects" />
-            <marker date="1519510659524" expanded="true" signature="9296:9329" ph="SELECT * FRO... subject_assignment" />
-            <marker date="1519510659524" expanded="true" signature="9296:9348" ph="SELECT * FRO... subject_assignment" />
-            <marker date="1519510659524" expanded="true" signature="9296:9407" ph="SELECT * FRO... subject_assignment" />
-            <marker date="1519510659524" expanded="true" signature="9296:9409" ph="SELECT * FRO... subject_assignment" />
-            <marker date="1519510659524" expanded="true" signature="10473:10499" ph="SELECT * FRO... subjects" />
-            <marker date="1519510659524" expanded="true" signature="10473:10525" ph="SELECT * FRO... subjects" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/hse.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding>
-            <element signature="e#873#892#0#HTML" expanded="true" />
-            <element signature="e#936#956#0#HTML" expanded="true" />
-            <element signature="e#1015#1034#0#HTML" expanded="true" />
-            <element signature="e#1587#1614#0#HTML" expanded="true" />
-            <element signature="e#1709#1756#0#HTML" expanded="true" />
-            <element signature="e#1887#1934#0#HTML" expanded="true" />
-            <element signature="e#2052#2099#0#HTML" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <marker date="1519567613244" expanded="true" signature="1526:1567" ph="SELECT * FRO... cycles" />
+            <marker date="1519567613244" expanded="true" signature="1526:1568" ph="SELECT * FRO... cycles" />
+            <marker date="1519567613244" expanded="true" signature="2313:2353" ph="SELECT * FRO... parts" />
+            <marker date="1519567613244" expanded="true" signature="2313:2354" ph="SELECT * FRO... parts" />
+            <marker date="1519567613244" expanded="true" signature="3267:3310" ph="SELECT * FRO... subjects" />
+            <marker date="1519567613244" expanded="true" signature="3267:3311" ph="SELECT * FRO... subjects" />
+            <marker date="1519567613244" expanded="true" signature="3267:3351" ph="SELECT * FRO... subjects" />
+            <marker date="1519567613244" expanded="true" signature="9721:9754" ph="SELECT * FRO... subject_assignment" />
+            <marker date="1519567613244" expanded="true" signature="9721:9773" ph="SELECT * FRO... subject_assignment" />
+            <marker date="1519567613244" expanded="true" signature="9721:9832" ph="SELECT * FRO... subject_assignment" />
+            <marker date="1519567613244" expanded="true" signature="9721:9834" ph="SELECT * FRO... subject_assignment" />
+            <marker date="1519567613244" expanded="true" signature="10898:10924" ph="SELECT * FRO... subjects" />
+            <marker date="1519567613244" expanded="true" signature="10898:10950" ph="SELECT * FRO... subjects" />
           </folding>
         </state>
       </provider>

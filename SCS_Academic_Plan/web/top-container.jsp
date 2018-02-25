@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
 <script>
     function setVisible() {
         var style = document.getElementById("right-block").style;
@@ -22,7 +21,16 @@
             button.innerHTML="<";
         }
     }
+
+    function init() {
+        var table = document.getElementById("cont-table");
+        if(table.offsetHeight>1200) {
+            document.getElementById("cont-block").style.height = table.offsetHeight + 220 + "px";
+            document.getElementById("cont-main-block").style.height = table.offsetHeight+70+"px";
+        }
+    }
 </script>
+<body onload="init();">
 <div class="wrapper">
     <div class = "menu">
         <ul>
@@ -35,5 +43,5 @@
         </ul>
     </div>
     <div id="left-block" class="left-block custom-scrollbar">
-        <div class="content-block">
+        <div id="cont-block" class="content-block">
             <div class="content">

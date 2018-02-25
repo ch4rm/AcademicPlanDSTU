@@ -9,9 +9,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    String backColorHead="background: #FFD0C6";
+    String backColorCols="background: #FFE1D7";
     Database database = new Database();
     Connection connection = database.getConnection();
-    Assignment asmt = new Assignment(connection, 2);
+    Assignment men = new Assignment(connection, backColorHead, backColorCols, 2);
 %>
 <html>
 <head>
@@ -20,8 +22,8 @@
 </head>
 <%@ include file="top-container.jsp" %>
 <form>
-    <div style="height: 1100px">
-        <table style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
+    <div id="cont-main-block" style="height: 1100px">
+        <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
             <tr>
                 <td rowspan="4" style="width: 90px">№ п/п</td>
                 <td rowspan="4" style="width: 300px">Название дисципилины</td>
@@ -35,18 +37,18 @@
                     Распределение по курсам, семестрам и неделям
                 </td>
             </tr>
-            <%=asmt.headTable()%>
+            <%=men.headTable()%>
             <tr>
-                <td colspan="46" style="background: #dbe9f8"><%=asmt.getCycle(2)%></td>
+                <td colspan="46" style="<%=backColorHead%>"><%=men.getCycle(2)%></td>
             </tr>
             <tr>
-                <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=asmt.getParts(3)%></td>
+                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=men.getParts(3)%></td>
             </tr>
-            <%=asmt.getSubjects(3)%>
+            <%=men.getSubjects(3)%>
             <tr>
-                <td colspan="46" style="font-weight:bolder; background: #dbe9f8"><%=asmt.getParts(4)%></td>
+                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=men.getParts(4)%></td>
             </tr>
-            <%=asmt.getSubjects(4)%>
+            <%=men.getSubjects(4)%>
         </table>
     </div>
     <div style="width: 1800px; height: 100px; bottom:0;">

@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * Created by Shishko.Arthur on 03.02.2018.
  */
 public class Assignment {
+    private String backColorHead="background: #CEDFF2";
+    private String backColorCols="background: #e6eefb";
     private Connection connection;
     private String cycle="";
     private ArrayList<String> department = new ArrayList<>();
@@ -19,6 +21,16 @@ public class Assignment {
     private int index=0;
 
     public Assignment(Connection connection, int key_type_fk){
+        init(connection, key_type_fk);
+    }
+
+    public Assignment(Connection connection, String backColorHead, String backColorCols, int key_type_fk){
+        this.backColorHead = backColorHead;
+        this.backColorCols = backColorCols;
+        init(connection, key_type_fk);
+    }
+
+    private void init(Connection connection, int key_type_fk){
         this.connection = connection;
         try {
             department();
@@ -38,9 +50,9 @@ public class Assignment {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM cycles WHERE key_cycle_pk = "+cyclePk);
         while (resultSet.next()) {
             cycle = resultSet.getString("key_cycle_let");
-            s = table.getField(cycle, "key_cycle_let", "width:80px; font-weight:bolder; font-size:14pt; background: #dbe9f8")
+            s = table.getField(cycle, "key_cycle_let", "width:80px; font-weight:bolder; font-size:14pt; "+backColorHead)
                 + table.getField(resultSet.getString("name_c"), "name_c", "width: 600px; font-weight:bolder; font-size:14pt; " +
-                    "background: #dbe9f8");
+                    backColorHead);
         }
         statement.close();
         resultSet.close();
@@ -62,9 +74,9 @@ public class Assignment {
             nameP=resultSet.getString("name_p");
         }
         s= cycle + "." + table.getField(keyPartsLet, "key_parts_let."+part, "width:50px; font-weight:bold;font-size:12pt; " +
-                "background: #dbe9f8")
+                backColorHead)
                 + table.getField(nameP, "name_p."+part, "width:600px; font-weight:bold;font-size:12pt; " +
-                "background: #dbe9f8");
+                backColorHead);
         statement.close();
         resultSet.close();
         return s;
@@ -107,7 +119,7 @@ public class Assignment {
             result[9]+=bsr;
             s+="<tr><td>" + cycle + "."              + resultSet.getString("key_subject") + "</td>"
                     + "<td>"                         + table.getField(name, "name_s."+keypk,"width:300px")
-                    + "</td><td>"                    + table.getField(department.get(keydepfk+1),"key_department_fk."+index,"width:40px")
+                    + "</td><td>"                    + table.getField(department.get(keydepfk-1),"key_department_fk."+index,"width:40px")
                     + "</td><td></td><td>"           + table.getField(exams+"", "exams_s."+keypk,"width:20px")
                     + "</td><td>"                    + table.getField(setoff+"", "setoff_s."+keypk,"width:20px")
                     + "</td><td>"+all+"</td><td>"
@@ -143,7 +155,7 @@ public class Assignment {
         //Количество возможных семестров
         for(int i=1;i<9;i++) {
             if (color)
-                style = "background: #ecefff";
+                style = backColorCols;
             else
                 style = "";
             color = !color;
