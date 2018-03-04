@@ -99,8 +99,8 @@ create table subjects ( -- дисциплины
 	key_parts_fk smallint references parts(key_parts_pk), -- кодчасти_fk
 	name_s varchar(80), -- наименование
 	key_department_fk smallint,
-	exams_s varchar(40), -- экзамены
-	setoff_s varchar(40), -- зачеты
+	exams_s smallint, -- экзамены
+	setoff_s smallint, -- зачеты
 	lect_s smallint, -- лекции
 	lab_s smallint, -- лабработы
 	pract_s smallint, -- практзанятия
@@ -629,3 +629,33 @@ INSERT INTO subject_assignment (key_subject_fk, course_num_sa, semester_num_sa,
 				 ('76','4','8','3','2','2','0','4','0'),
 				 ('79','3','6','3','2','2','0','3','0');
 			   -- +3
+			   
+CREATE OR REPLACE FUNCTION sub_summ(keyf integer) RETURNS TABLE (summ smallint)
+AS $$  
+BEGIN
+	SELECT SUM(exams_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(setoff_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(lect_s) + SUM(lab_s) + SUM(pract_s) + SUM(ksr_s) + SUM(bsr_S) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(lect_s) + SUM(lab_s) + SUM(pract_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(lect_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(lab_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(pract_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(ksr_s) + SUM(bsr_S) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(ksr_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+	SELECT SUM(bsr_s) INTO summ FROM subjects WHERE key_parts_fk = keyf;
+	RETURN NEXT;
+END
+$$ 
+LANGUAGE plpgsql;
+
+
+

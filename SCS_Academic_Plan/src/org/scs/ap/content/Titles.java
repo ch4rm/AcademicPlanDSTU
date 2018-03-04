@@ -28,6 +28,7 @@ public class Titles {
     private int ressearch[] = new int[4];
     private int stateExam[] = new int[4];
     private int finalWork[] = new int[4];
+    private int monthTableColumns[]={4, 5, 4, 4, 5, 4, 4, 4, 5, 4, 4, 5};
 
     public Titles(Connection connection, Config config){
         this.connection = connection;
@@ -76,18 +77,8 @@ public class Titles {
             months = config.getArrayXml("month");
             table.openRow();
             table.setRow("<td rowspan=\"4\" class=\"rotatable\">КУРС</td>");
-            table.add(months.get(0), 4);
-            table.add(months.get(1), 5);
-            table.add(months.get(2), 4);
-            table.add(months.get(3), 4);
-            table.add(months.get(4), 5);
-            table.add(months.get(5), 4);
-            table.add(months.get(6), 4);
-            table.add(months.get(7), 4);
-            table.add(months.get(8), 5);
-            table.add(months.get(9), 4);
-            table.add(months.get(10), 4);
-            table.add(months.get(11), 5);
+            for(int i=0; i<12;i++)
+                table.add(months.get(i), monthTableColumns[i]);
             table.closeRow();
             //Недели
             genWeek(table, "week_msa", statement);

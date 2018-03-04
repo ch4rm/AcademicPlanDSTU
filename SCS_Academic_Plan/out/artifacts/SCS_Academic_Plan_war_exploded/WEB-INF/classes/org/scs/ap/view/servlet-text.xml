@@ -1,45 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ТИТУЛ -->
-<title>
-    <!-- ГРАФИК УЧЕБНОГО ПРОЦЕССА -->
-    <shedulesAp>
-        <month>Сентябрь</month>
-        <month>Октябрь</month>
-        <month>Ноябрь</month>
-        <month>Декабрь</month>
-        <month>Январь</month>
-        <month>Февраль</month>
-        <month>Март</month>
-        <month>Апрель</month>
-        <month>Май</month>
-        <month>Июнь</month>
-        <month>Июль</month>
-        <month>Август</month>
-    </shedulesAp>
-    <!-- СВОДНЫЕ ДАННЫЕ О БЮДЖЕТЕ ВРЕМЕНИ -->
-    <timeBudget>
-        <budget>КУРС</budget>
-        <budget>Теорет. обучение</budget>
-        <budget>Сдача кредитов</budget>
-        <budget>Экзамен. сессия</budget>
-        <budget>Каникулы</budget>
-        <budget>Практика</budget>
-        <budget>Научно-исслед. работа (НИР)</budget>
-        <budget>Гос. экзамен</budget>
-        <budget>Подготовка ВКР</budget>
-        <budget>Всего</budget>
-    </timeBudget>
-    <!-- ПРАКТИКА -->
-    <practics>
-        <headPractics>Название практики</headPractics>
-        <headPractics>Семестр</headPractics>
-        <headPractics>Недели</headPractics>
-    </practics>
-    <!-- ГОСУДАРСТВЕННАЯ ИТОГОВАЯ АТТЕСТАЦИЯ -->
-    <stateSertification>
-        <headState>Название учебной дисциплины</headState>
-        <headState>Форма государственной итоговой аттестации (экзамен, ВКР)</headState>
-        <headState>Семестр</headState>
-    </stateSertification>
-</title>
+<academicPlan>
+    <title>
+        <titleContent>
+            <content>Министерство образования и науки Луганской Народной Республики</content>
+            <content>ГОУ ВПО ЛНР "Донбасский государственный технический университет" *(ДонГТУ)</content>
+            <!-- -->
+            <content>Утверждаю</content>
+            <content>Зинченко А.М.</content>
+            <content>Одобрен Ученым советом ДонГТУ, протокол от</content>
+            <!-- -->
+            <content>Квалификация:</content>
+            <content>Срок обучения:</content>
+            <content>на базе: среднего общего образования</content>
+            <!-- -->
+            <content>УЧЕБНЫЙ ПЛАН</content>
+            <content> - год приёма</content>
+            <!-- -->
+            <content>уровень высшего образования (УВО)</content>
+            <content>код и наименование укрупненной группы направления подготовки</content>
+            <content>код и наименование направления подготовки</content>
+            <content>профиль (направленность)</content>
+            <content>форма обучения</content>
+            <!-- -->
+            <content>09.00.00  Информатика и вычислительная техника</content>
+            <content>09.03.01  Информатика и вычислительная техника</content>
+            <content>(дневная, вечерняя, заочная (дистанционная), экстернат</content>
+            <!-- ОБОЗНАЧЕНИЯ -->
+            <content>ОБОЗНАЧЕНИЯ: </content>
+            <content>_ - теоретическое обучение; СК - сдача кредитов; С - сессия: К - каникулы: П - практика; Н - НИР; Г - государственный экзамен: Д - подотовка ВКР.</content>
+            <!-- ИМЕНА ТАБЛИЦ -->
+            <content>І. ГРАФИК УЧЕБНОГО ПРОЦЕССА</content>
+            <content>II. СВОДНЫЕ ДАННЫЕ О БЮДЖЕТЕ ВРЕМЕНИ, недели</content>
+            <content>III. ПРАКТИКА</content>
+            <content>IV. ГОСУДАРСТВЕННАЯ ИТОГОВАЯ АТТЕСТАЦИЯ</content>
+        </titleContent>
+        <!-- ГРАФИК УЧЕБНОГО ПРОЦЕССА -->
+        <shedulesAp>
+            <month>Сентябрь</month>
+            <month>Октябрь</month>
+            <month>Ноябрь</month>
+            <month>Декабрь</month>
+            <month>Январь</month>
+            <month>Февраль</month>
+            <month>Март</month>
+            <month>Апрель</month>
+            <month>Май</month>
+            <month>Июнь</month>
+            <month>Июль</month>
+            <month>Август</month>
+        </shedulesAp>
+        <!-- СВОДНЫЕ ДАННЫЕ О БЮДЖЕТЕ ВРЕМЕНИ -->
+        <timeBudget>
+            <budget>КУРС</budget>
+            <budget>Теорет. обучение</budget>
+            <budget>Сдача кредитов</budget>
+            <budget>Экзамен. сессия</budget>
+            <budget>Каникулы</budget>
+            <budget>Практика</budget>
+            <budget>Научно-исслед. работа (НИР)</budget>
+            <budget>Гос. экзамен</budget>
+            <budget>Подготовка ВКР</budget>
+            <budget>Всего</budget>
+        </timeBudget>
+        <!-- ПРАКТИКА -->
+        <practics>
+            <headPractics>Название практики</headPractics>
+            <headPractics>Семестр</headPractics>
+            <headPractics>Недели</headPractics>
+        </practics>
+        <!-- ГОСУДАРСТВЕННАЯ ИТОГОВАЯ АТТЕСТАЦИЯ -->
+        <stateSertification>
+            <headState>Название учебной дисциплины</headState>
+            <headState>Форма государственной итоговой аттестации (экзамен, ВКР)</headState>
+            <headState>Семестр</headState>
+        </stateSertification>
+    </title>
+    <hse-mns-prof>
+        <table-hmp>№ п/п</table-hmp>
+        <table-hmp>Название дисципилины</table-hmp>
+        <table-hmp>Шифр кафедры</table-hmp>
+        <table-hmp>з.е</table-hmp>
+        <table-hmp>Экзамены</table-hmp>
+        <table-hmp>Зачёты</table-hmp>
+        <table-hmp>Общий объём</table-hmp>
+        <table-hmp>Часы</table-hmp>
+        <table-hmp>Распределение по курсам, семестрам и неделям</table-hmp>
+    </hse-mns-prof>
+</academicPlan>
 

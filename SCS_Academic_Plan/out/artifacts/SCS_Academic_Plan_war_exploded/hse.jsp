@@ -1,6 +1,8 @@
 <%@ page import="org.scs.ap.content.Assignment" %>
 <%@ page import="org.scs.ap.database.Database" %>
-<%@ page import="java.sql.Connection" %><%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="org.scs.ap.view.Config" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 14.01.2018
@@ -10,9 +12,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String backColorHead="background: #CEDFF2";
+    String backColorCols="background: #e6eefb";
     Database database = new Database();
     Connection connection = database.getConnection();
-    Assignment hse = new Assignment(connection, 1);
+    Assignment hse = new Assignment(connection,backColorHead, backColorCols, 1);
+    Config cfg = new Config();
+    ArrayList<String> content = cfg.getArrayXml("table-hmp");
 %>
 <html>
 <head>
@@ -24,16 +29,16 @@
     <div id="cont-main-block" style="height: 1100px">
         <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
             <tr>
-                <td rowspan="4" style="width: 90px">№ п/п</td>
-                <td rowspan="4" style="width: 300px">Название дисципилины</td>
-                <td rowspan="4" style="width: 40px" class="rotatable">Шифр кафедры</td>
-                <td rowspan="4" class="rotatable">з.е</td>
-                <td rowspan="4" class="rotatable">Экзамены</td>
-                <td rowspan="4" class="rotatable">Зачёты</td>
-                <td rowspan="4" class="rotatable">Общий объём</td>
-                <td colspan="7">Часы</td>
+                <td rowspan="4" style="width: 90px"><%=content.get(0)%></td>
+                <td rowspan="4" style="width: 300px"><%=content.get(1)%></td>
+                <td rowspan="4" style="width: 40px" class="rotatable"><%=content.get(2)%></td>
+                <td rowspan="4" class="rotatable"><%=content.get(3)%></td>
+                <td rowspan="4" class="rotatable"><%=content.get(4)%></td>
+                <td rowspan="4" class="rotatable"><%=content.get(5)%></td>
+                <td rowspan="4" class="rotatable"><%=content.get(6)%></td>
+                <td colspan="7"><%=content.get(7)%></td>
                 <td colspan="32">
-                    Распределение по курсам, семестрам и неделям
+                    <%=content.get(8)%>
                 </td>
             </tr>
             <%=hse.headTable()%>

@@ -16,16 +16,23 @@ import java.sql.*;
  */
 @WebServlet(name = "Title")
 public class Title extends HttpServlet {
+    Connection connection;
+    Statement statement;
     /**
      * Обновляем титул
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         try {
+            Database database = new Database();
+            connection = database.getConnection();
+            statement = connection.createStatement();
             placeHead(request);
             placeMatrixShedulesUp(request);
             placePractics(request);
             placeStateAttestaion(request);
+            connection.close();
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,9 +44,7 @@ public class Title extends HttpServlet {
      * Вносим изменения в вверхний титул
      */
     private void placeHead(HttpServletRequest request) throws SQLException{
-        Database database = new Database();
-        Connection connection = database.getConnection();
-        Statement statement = connection.createStatement();
+
         ResultSet resultSet = statement.executeQuery("SELECT * FROM titles");
         while (resultSet.next()) {
             if (!request.getParameter("yearCreation").equals(resultSet.getString("year_creation")))
@@ -60,8 +65,6 @@ public class Title extends HttpServlet {
             if (!request.getParameter("name_prof").equals(resultSet.getString("name_prof")))
                 update("UPDATE profiles SET name_prof = '" + request.getParameter("name_prof")+"'");
         }
-        statement.close();
-        connection.close();
         resultSet.close();
     }
 
@@ -69,9 +72,6 @@ public class Title extends HttpServlet {
      * Вносим изменения в таблицу - график учебного процесса
      */
     private void placeMatrixShedulesUp(HttpServletRequest request) throws SQLException{
-        Database database = new Database();
-        Connection connection = database.getConnection();
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
         int i=0;
         while (resultSet.next()) {
@@ -101,8 +101,6 @@ public class Title extends HttpServlet {
             if(i>206) break;
             i++;
         }
-        statement.close();
-        connection.close();
         resultSet.close();
     }
 
@@ -110,9 +108,6 @@ public class Title extends HttpServlet {
      * Вносим изменения в таблицу практики
      */
     private void placePractics(HttpServletRequest request) throws SQLException {
-        Database database = new Database();
-        Connection connection = database.getConnection();
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM pract_types ORDER BY key_pract_pk");
         int i=0;
         while (resultSet.next()) {
@@ -129,8 +124,6 @@ public class Title extends HttpServlet {
                         + " WHERE key_pract_pk = " + (i+1));
             i++;
         }
-        statement.close();
-        connection.close();
         resultSet.close();
     }
 
@@ -138,9 +131,6 @@ public class Title extends HttpServlet {
      * Вносим изменения в таблицу Государственной Аттестации
      */
     private void placeStateAttestaion(HttpServletRequest request) throws SQLException{
-        Database database = new Database();
-        Connection connection = database.getConnection();
-        Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM state_certification_types ORDER BY key_sc_pk");
         int i=0;
         while (resultSet.next()) {
@@ -160,8 +150,6 @@ public class Title extends HttpServlet {
                         + " WHERE key_sc_pk = " + (i+1));
             i++;
         }
-        statement.close();
-        connection.close();
         resultSet.close();
     }
 
@@ -179,17 +167,11 @@ public class Title extends HttpServlet {
      * @param row - строка запроса
      */
     private void update(String row){
-        System.out.println(row);
-        Database database = new Database();
-        Connection connection = database.getConnection();
-        Statement statement;
-        ResultSet resultSet;
+        Statement statement1;
         try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(row);
-            resultSet.close();
-            statement.close();
-            connection.close();
+            statement1 = connection.createStatement();
+            statement1.executeUpdate(row);
+            statement1.close();
         }catch (SQLException e){
             new RuntimeException(e);
         }
