@@ -13,12 +13,16 @@
         <servlet-class>org.scs.ap.servlet.Direct</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Title</servlet-name>
-        <servlet-class>org.scs.ap.servlet.Title</servlet-class>
+        <servlet-name>TitlePost</servlet-name>
+        <servlet-class>org.scs.ap.servlet.TitlePost</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>org.scs.ap.servlet.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubjectPost</servlet-name>
+        <servlet-class>org.scs.ap.servlet.SubjectPost</servlet-class>
     </servlet>
 
     <!-- mapping -->
@@ -27,11 +31,15 @@
         <url-pattern/>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Title</servlet-name>
+        <servlet-name>TitlePost</servlet-name>
         <url-pattern>/title</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectPost</servlet-name>
+        <url-pattern>/subject</url-pattern>
     </servlet-mapping>
 </web-app>

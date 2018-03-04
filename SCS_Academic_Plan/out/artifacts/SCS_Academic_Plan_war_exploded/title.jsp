@@ -1,5 +1,5 @@
 <%@ page import="org.scs.ap.database.Database" %>
-<%@ page import="org.scs.ap.content.Titles" %>
+<%@ page import="org.scs.ap.content.TitleGenerate" %>
 <%@ page import="org.scs.ap.view.Config" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.util.ArrayList" %>
@@ -7,7 +7,7 @@
 <%  Database database = new Database();
     Connection connection = database.getConnection();
     Config cfg = new Config();
-    Titles titles = new Titles(connection, cfg);
+    TitleGenerate titles = new TitleGenerate(connection, cfg);
     ArrayList<String> content = cfg.getArrayXml("content");
 %>
 <html>

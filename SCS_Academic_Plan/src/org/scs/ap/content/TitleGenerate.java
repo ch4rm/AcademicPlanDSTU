@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Shishko.Arthur on 06.01.2018.
  */
-public class Titles {
+public class TitleGenerate {
     private Connection connection;
     private Config config;
     private String yearCreation;
@@ -30,7 +30,7 @@ public class Titles {
     private int finalWork[] = new int[4];
     private int monthTableColumns[]={4, 5, 4, 4, 5, 4, 4, 4, 5, 4, 4, 5};
 
-    public Titles(Connection connection, Config config){
+    public TitleGenerate(Connection connection, Config config){
         this.connection = connection;
         this.config = config;
         initial();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Shishko.Arthur on 03.02.2018.
  */
-public class Assignment {
+public class SubjectGenerate {
     private String backColorHead;
     private String backColorCols;
     private Connection connection;
@@ -22,7 +22,7 @@ public class Assignment {
                     "lect_s", "lab_s", "pract_s", "ksr_s", "bsr_s"};
     private int index=0;
 
-    public Assignment(Connection connection, String backColorHead, String backColorCols, int key_type_fk){
+    public SubjectGenerate(Connection connection, String backColorHead, String backColorCols, int key_type_fk){
         this.backColorHead = backColorHead;
         this.backColorCols = backColorCols;
         this.connection = connection;
@@ -44,7 +44,7 @@ public class Assignment {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM cycles WHERE key_cycle_pk = "+cyclePk);
         while (resultSet.next()) {
             cycle = resultSet.getString("key_cycle_let");
-            s = table.getField(cycle, "key_cycle_let", "width:80px; font-weight:bolder; font-size:14pt; "+backColorHead)
+            s = table.getField(cycle, "key_cycle_let."+cyclePk, "width:80px; font-weight:bolder; font-size:14pt; "+backColorHead)
                 + table.getField(resultSet.getString("name_c"), "name_c", "width: 600px; font-weight:bolder; font-size:14pt; " +
                     backColorHead);
         }

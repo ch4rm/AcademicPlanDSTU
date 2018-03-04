@@ -12,14 +12,6 @@ public final class Database {
         Database.name = name;
     }
 
-    public static void setPassword(String password){
-        Database.password = password;
-    }
-
-    public static void setUrl(String url){
-        Database.url = url;
-    }
-
     public static Connection getConnection(){
         try {
             Class.forName("org.postgresql.Driver");

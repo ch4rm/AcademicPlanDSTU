@@ -14,8 +14,8 @@ import java.sql.*;
 /**
  * Created by Shishko.Arthur on 14.01.2018.
  */
-@WebServlet(name = "Title")
-public class Title extends HttpServlet {
+@WebServlet(name = "TitlePost")
+public class TitlePost extends HttpServlet {
     Connection connection;
     Statement statement;
     /**
@@ -44,7 +44,6 @@ public class Title extends HttpServlet {
      * Вносим изменения в вверхний титул
      */
     private void placeHead(HttpServletRequest request) throws SQLException{
-
         ResultSet resultSet = statement.executeQuery("SELECT * FROM titles");
         while (resultSet.next()) {
             if (!request.getParameter("yearCreation").equals(resultSet.getString("year_creation")))
@@ -166,7 +165,7 @@ public class Title extends HttpServlet {
      * Функция реализации запроса
      * @param row - строка запроса
      */
-    private void update(String row){
+    public void update(String row){
         Statement statement1;
         try {
             statement1 = connection.createStatement();

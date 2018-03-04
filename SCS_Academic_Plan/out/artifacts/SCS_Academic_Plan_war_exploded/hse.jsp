@@ -1,4 +1,4 @@
-<%@ page import="org.scs.ap.content.Assignment" %>
+<%@ page import="org.scs.ap.content.SubjectGenerate" %>
 <%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="org.scs.ap.view.Config" %>
@@ -15,7 +15,7 @@
     String backColorCols="background: #e6eefb";
     Database database = new Database();
     Connection connection = database.getConnection();
-    Assignment hse = new Assignment(connection,backColorHead, backColorCols, 1);
+    SubjectGenerate hse = new SubjectGenerate(connection,backColorHead, backColorCols, 1);
     Config cfg = new Config();
     ArrayList<String> content = cfg.getArrayXml("table-hmp");
 %>
@@ -25,7 +25,10 @@
     <LINK REL="StyleSheet" HREF="<%=request.getContextPath()%>/styles/style.css" TYPE="text/css">
 </head>
 <%@ include file="top-container.jsp" %>
-<form>
+<form action="/subject" method="POST">
+    <%  String cycle="cycle";
+        session.setAttribute("cycle", cycle);
+    %>
     <div id="cont-main-block" style="height: 1100px">
         <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
             <tr>

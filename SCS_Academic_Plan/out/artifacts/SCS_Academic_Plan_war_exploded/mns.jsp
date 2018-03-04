@@ -1,4 +1,4 @@
-<%@ page import="org.scs.ap.content.Assignment" %>
+<%@ page import="org.scs.ap.content.SubjectGenerate" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="java.util.ArrayList" %>
@@ -15,7 +15,7 @@
     String backColorCols="background: #FFE1D7";
     Database database = new Database();
     Connection connection = database.getConnection();
-    Assignment men = new Assignment(connection, backColorHead, backColorCols, 2);
+    SubjectGenerate men = new SubjectGenerate(connection, backColorHead, backColorCols, 2);
     Config cfg = new Config();
     ArrayList<String> content = cfg.getArrayXml("table-hmp");
 %>
