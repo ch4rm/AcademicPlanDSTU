@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class TitleGenerate {
     private Connection connection;
     private Config config;
+    private String backColorHead;
     private String yearCreation;
     private String yearReception;
     private String qualification;
@@ -30,7 +31,8 @@ public class TitleGenerate {
     private int finalWork[] = new int[4];
     private int monthTableColumns[]={4, 5, 4, 4, 5, 4, 4, 4, 5, 4, 4, 5};
 
-    public TitleGenerate(Connection connection, Config config){
+    public TitleGenerate(Connection connection, Config config, String backColorHead){
+        this.backColorHead = backColorHead;
         this.connection = connection;
         this.config = config;
         initial();
@@ -75,7 +77,7 @@ public class TitleGenerate {
             statement = connection.createStatement();
             ArrayList<String> months;
             months = config.getArrayXml("month");
-            table.openRow();
+            table.openRow(backColorHead);
             table.setRow("<td rowspan=\"4\" class=\"rotatable\">КУРС</td>");
             for(int i=0; i<12;i++)
                 table.add(months.get(i), monthTableColumns[i]);
@@ -155,7 +157,7 @@ public class TitleGenerate {
         int sumAll=0;
         ArrayList<String> budget;
         budget = config.getArrayXml("budget");
-        table.openRow();
+        table.openRow(backColorHead);
         String atribute="\theight: 120px;";
         for(int i=0;i<10;i++) {
             table.add(budget.get(i), atribute);
@@ -202,7 +204,7 @@ public class TitleGenerate {
         try {
             ArrayList<String> practs;
             practs = config.getArrayXml("headPractics");
-            table.openRow();
+            table.openRow(backColorHead);
             String atribute="\theight: 120px;";
             for(int i=0;i<3;i++)
                 table.add(practs.get(i), atribute);
@@ -243,7 +245,7 @@ public class TitleGenerate {
         try {
             ArrayList<String> states;
             states = config.getArrayXml("headState");
-            table.openRow();
+            table.openRow(backColorHead);
             for(int i=0;i<3;i++)
                 table.add(states.get(i), "");
             table.closeRow();

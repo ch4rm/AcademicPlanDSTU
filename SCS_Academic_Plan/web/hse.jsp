@@ -12,10 +12,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String backColorHead="background: #CEDFF2";
-    String backColorCols="background: #e6eefb";
     Database database = new Database();
     Connection connection = database.getConnection();
-    SubjectGenerate hse = new SubjectGenerate(connection,backColorHead, backColorCols, 1);
+    SubjectGenerate hse = new SubjectGenerate(connection,backColorHead);
     Config cfg = new Config();
     ArrayList<String> content = cfg.getArrayXml("table-hmp");
 %>
@@ -27,32 +26,32 @@
 <%@ include file="top-container.jsp" %>
 <form action="/subject" method="POST">
     <div id="cont-main-block" style="height: 1100px">
-        <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "title-table">
+        <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "hmp-table">
             <tr>
                 <td rowspan="4" style="width: 90px"><%=content.get(0)%></td>
                 <td rowspan="4" style="width: 300px"><%=content.get(1)%></td>
-                <td rowspan="4" style="width: 40px" class="rotatable"><%=content.get(2)%></td>
+                <td rowspan="4" style="width: 50px" class="rotatable"><%=content.get(2)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(3)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(4)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(5)%></td>
-                <td rowspan="4" class="rotatable"><%=content.get(6)%></td>
-                <td colspan="7"><%=content.get(7)%></td>
+                <td colspan="7"><%=content.get(6)%></td>
                 <td colspan="32">
-                    <%=content.get(8)%>
+                    <%=content.get(7)%>
                 </td>
             </tr>
             <%=hse.headTable()%>
             <tr>
-                <td colspan="46" style="<%=backColorHead%>"><%=hse.getCycle(1)%></td>
+                <td colspan="45" style="<%=backColorHead%>"><%=hse.getCycle(1)%></td>
             </tr>
             <tr>
-                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=hse.getParts(1)%></td>
+                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=hse.getParts(1)%></td>
             </tr>
             <%=hse.getSubjects(1)%>
             <tr>
-                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=hse.getParts(2)%></td>
+                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=hse.getParts(2)%></td>
             </tr>
             <%=hse.getSubjects(2)%>
+            <%=hse.summPage(1)%>
         </table>
     </div>
     <div style="width: 1800px; height: 100px; bottom:0;">

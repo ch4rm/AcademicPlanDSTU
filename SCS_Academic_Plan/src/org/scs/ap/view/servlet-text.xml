@@ -77,15 +77,31 @@
         </stateSertification>
     </title>
     <hse-mns-prof>
-        <table-hmp>№ п/п</table-hmp>
-        <table-hmp>Название дисципилины</table-hmp>
-        <table-hmp>Шифр кафедры</table-hmp>
-        <table-hmp>з.е</table-hmp>
-        <table-hmp>Экзамены</table-hmp>
-        <table-hmp>Зачёты</table-hmp>
-        <table-hmp>Общий объём</table-hmp>
-        <table-hmp>Часы</table-hmp>
-        <table-hmp>Распределение по курсам, семестрам и неделям</table-hmp>
+        <table-h>
+            <table-hmp>№ п/п</table-hmp>
+            <table-hmp>Название дисципилины</table-hmp>
+            <table-hmp>Шифр кафедры</table-hmp>
+            <table-hmp>Экзамены</table-hmp>
+            <table-hmp>Зачёты</table-hmp>
+            <table-hmp>Общий объём</table-hmp>
+            <table-hmp>Часы</table-hmp>
+            <table-hmp>Распределение по курсам, семестрам и неделям</table-hmp>
+        </table-h>
+        <table-h1>
+            <table-hmp1>Всего</table-hmp1>
+            <table-hmp1>Лек.</table-hmp1>
+            <table-hmp1>Лаб.</table-hmp1>
+            <table-hmp1>Пр.</table-hmp1>
+            <table-hmp1>Всего</table-hmp1>
+            <table-hmp1>КСР</table-hmp1>
+            <table-hmp1>БСР</table-hmp1>
+        </table-h1>
+        <table-h2>
+            <table-hmp2>Лек.</table-hmp2>
+            <table-hmp2>Лаб.</table-hmp2>
+            <table-hmp2>Пр.</table-hmp2>
+            <table-hmp2>Сам.</table-hmp2>
+        </table-h2>
     </hse-mns-prof>
 </academicPlan>
 

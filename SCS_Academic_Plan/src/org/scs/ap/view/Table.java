@@ -20,6 +20,8 @@ public class Table {
      */
     public void openRow(){formattedString.append("<tr>");}
 
+    public void openRow(String style){formattedString.append("<tr style=\""+style+"\">" );}
+
     /**
      * Добавить ячейку
      * @param str - содержимое ячейки

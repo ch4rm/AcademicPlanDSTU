@@ -130,7 +130,18 @@ body{
 
 .title-table tr td {
 	border: 1px solid black;
-	padding: 5px;
+	padding: 5px 5px 5px 5px;
+}
+
+.hmp-table{
+	table-layout: fixed;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+.hmp-table tr td {
+	border: 1px solid black;
+	padding: 5px 10px 5px 5px;
 }
 
 /* СТИЛЬ НИЖНИХ ТАБЛИЦ TITLE */

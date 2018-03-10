@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="AcademicPlan@localhost" uuid="8ff8e625-388e-4643-90f0-cfeeb5ce8558">
+    <data-source source="LOCAL" name="AcademicPlan@127.0.0.1" uuid="13f40f6e-f69d-4ee4-bb24-2ad39f7160a6">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/AcademicPlan</jdbc-url>
-      <driver-properties>
-        <property name="ApplicationName" value="DataGrip" />
-      </driver-properties>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/AcademicPlan?charSet=UNICODE</jdbc-url>
     </data-source>
   </component>
 </project>

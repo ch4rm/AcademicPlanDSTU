@@ -4,10 +4,11 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%  Database database = new Database();
+<%  String backColorHead="background: white";
+    Database database = new Database();
     Connection connection = database.getConnection();
     Config cfg = new Config();
-    TitleGenerate titles = new TitleGenerate(connection, cfg);
+    TitleGenerate titles = new TitleGenerate(connection, cfg, backColorHead);
     ArrayList<String> content = cfg.getArrayXml("content");
 %>
 <html>
