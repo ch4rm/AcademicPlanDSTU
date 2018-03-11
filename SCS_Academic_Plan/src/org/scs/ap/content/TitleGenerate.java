@@ -5,9 +5,6 @@ import org.scs.ap.view.Table;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * Created by Shishko.Arthur on 06.01.2018.
- */
 public class TitleGenerate {
     private Connection connection;
     private Config config;

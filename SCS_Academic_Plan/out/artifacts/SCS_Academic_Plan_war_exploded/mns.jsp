@@ -2,7 +2,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="org.scs.ap.view.Config" %><%--
+<%@ page import="org.scs.ap.view.Config" %>
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 14.01.2018
@@ -12,11 +13,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String backColorHead="background: #FFD0C6";
+    int cycle = 2;
+    int parts[] = {3, 4};
+
     Database database = new Database();
     Connection connection = database.getConnection();
-    SubjectGenerate men = new SubjectGenerate(connection, backColorHead);
+    Statement statement = connection.createStatement();
+    statement.execute("SELECT create_sub("+cycle+");");
+    SubjectGenerate mns = new SubjectGenerate(connection,backColorHead);
     Config cfg = new Config();
     ArrayList<String> content = cfg.getArrayXml("table-hmp");
+    statement.close();
 %>
 <html>
 <head>
@@ -24,7 +31,8 @@
     <LINK REL="StyleSheet" HREF="<%=request.getContextPath()%>/styles/style.css" TYPE="text/css">
 </head>
 <%@ include file="top-container.jsp" %>
-<form>
+<%@ include file="popup.jsp" %>
+<form action="/mns" method="POST">
     <div id="cont-main-block" style="height: 1100px">
         <table id="cont-table" style="width: 100%; text-align: left; font-size: 11pt;" class = "hmp-table">
             <tr>
@@ -39,23 +47,25 @@
                     <%=content.get(7)%>
                 </td>
             </tr>
-            <%=men.headTable()%>
+            <%=mns.headTable()%>
             <tr>
-                <td colspan="45" style="<%=backColorHead%>"><%=men.getCycle(2)%></td>
+                <td colspan="45" style="<%=backColorHead%>"><%=mns.getCycle(cycle)%></td>
             </tr>
             <tr>
-                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=men.getParts(3)%></td>
+                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=mns.getParts(parts[0])%></td>
             </tr>
-            <%=men.getSubjects(3)%>
+            <%=mns.getSubjects(parts[0])%>
             <tr>
-                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=men.getParts(4)%></td>
+                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=mns.getParts(parts[1])%></td>
             </tr>
-            <%=men.getSubjects(4)%>
-            <%=men.summPage(2)%>
+            <%=mns.getSubjects(parts[1])%>
+            <%=mns.summPage(cycle)%>
         </table>
     </div>
     <div style="width: 1800px; height: 100px; bottom:0;">
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>
+        <input type="button" name="add" class="save-button addb" value="Добавить" onclick="addCol();"/>
+        <input type="button" name="remove" class="save-button remove" value="Удалить" onclick="delCol();"/>
     </div>
     <% connection.close(); %>
 </form>

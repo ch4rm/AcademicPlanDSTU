@@ -70,6 +70,13 @@ public class Table {
         return s;
     }
 
+    public String getField(String str, String name, String style, String id){
+        String s;
+        s="<input type=\"text\" id=\""+id+"\" name=\"" + name + "\" class=\"text-field\" value=\""
+                + str + "\" style=\"" + style + "\">";
+        return s;
+    }
+
     /**
      * Задать вручную элементы таблицы
      * @param str - содержимое

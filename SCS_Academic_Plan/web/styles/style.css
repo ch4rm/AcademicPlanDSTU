@@ -163,21 +163,46 @@ body{
 /* СОХРАНИТЬ ИЗМЕНЕНИЯ */
 .save-button{
 	float: right;
-	background-color: white;
-	border: none;
-	border: 2px solid #4CAF50;
-	color: #242424;
+	color: white;
+	border: 1px solid #4CAF50;
+	background-color: #4CAF50;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 14px;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
+	margin-left: 10px;
+	width: 150px;
 }
 
 .save-button:hover {
-	background-color: #4CAF50;
+	background-color: #449C47;
+	border: 1px solid #449C47;
+}
+
+.remove{
+	border: 1px solid #C96261;
+	background-color: white;
+	color: #272727;
+}
+
+.remove:hover{
+	background-color: #C96261;
+	border: 1px solid #C96261;
+	color: white;
+}
+
+.addb{
+	border: 1px solid #6097c9;
+	background-color: white;
+	color: #272727;
+}
+
+.addb:hover{
+	background-color: #6097c9;
+	border: 1px solid #6097c9;
 	color: white;
 }
 
@@ -189,4 +214,81 @@ body{
 	-o-transform: rotate(-90deg);
 	-ms-transform: rotate(-90deg);
 	transform: rotate(-90deg);
+}
+
+
+
+.parent_popup{
+	background-color: rgba(0, 0, 0, 0.8);
+	display: none;
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.popup{
+	background: #fff;
+	width: 520px;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	position: relative;
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+.close{
+	background-color: #FF8066;
+	height: 24px;
+	top: 0px;
+	right: 0px;
+	line-height: 24px;
+	position: absolute;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 14px;
+	width: 24px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+.close:hover{
+	background-color: #d2695c;
+}
+
+.popup-form{
+	width: 500px;
+	height: 260px;
+}
+
+.popup-table{
+	font-size: 14pt;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+.popup-table tr td{
+	padding-top: 8px;
+}
+
+.popup-table td{
+	padding-right: 5px;
+}
+
+.text-field-n {
+	font-size: 12pt;
+	width: 100%;
+	padding: 5px 25px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }

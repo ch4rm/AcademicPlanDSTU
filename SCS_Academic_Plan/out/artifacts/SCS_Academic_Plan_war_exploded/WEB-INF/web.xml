@@ -21,8 +21,20 @@
         <servlet-class>org.scs.ap.servlet.Login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SubjectPost</servlet-name>
-        <servlet-class>org.scs.ap.servlet.SubjectPost</servlet-class>
+        <servlet-name>HSEPost</servlet-name>
+        <servlet-class>org.scs.ap.servlet.HSEPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MNSPost</servlet-name>
+        <servlet-class>org.scs.ap.servlet.MNSPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PROFPost</servlet-name>
+        <servlet-class>org.scs.ap.servlet.PROFPost</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddColHSE</servlet-name>
+        <servlet-class>org.scs.ap.servlet.AddColHSE</servlet-class>
     </servlet>
 
     <!-- mapping -->
@@ -39,7 +51,19 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SubjectPost</servlet-name>
-        <url-pattern>/subject</url-pattern>
+        <servlet-name>HSEPost</servlet-name>
+        <url-pattern>/hse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MNSPost</servlet-name>
+        <url-pattern>/mns</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PROFPost</servlet-name>
+        <url-pattern>/prof</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddColHSE</servlet-name>
+        <url-pattern>/addhse</url-pattern>
     </servlet-mapping>
 </web-app>

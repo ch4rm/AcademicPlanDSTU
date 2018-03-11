@@ -5,7 +5,7 @@
         <LINK REL="StyleSheet" HREF="<%=request.getContextPath()%>/styles/login.css" TYPE="text/css">
     </head>
     <body>
-        <form action="/login" class="submit">
+        <form action="/login" method="POST" class="submit">
             <table class="login-table">
                 <tr style="padding-bottom: 100px;">
                     <td>Вход в систему:</td>

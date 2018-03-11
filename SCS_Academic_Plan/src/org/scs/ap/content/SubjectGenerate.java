@@ -2,13 +2,9 @@ package org.scs.ap.content;
 
 import org.scs.ap.view.Config;
 import org.scs.ap.view.Table;
-
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * Created by Shishko.Arthur on 03.02.2018.
- */
 public class SubjectGenerate {
     private Table table;
     private String backColorHead;
@@ -38,9 +34,9 @@ public class SubjectGenerate {
         ResultSet rs = statement.executeQuery("SELECT key_cycle_let, name_c FROM cycles WHERE key_cycle_pk = "+cyclePk);
         while(rs.next()){
             cycle = rs.getString("key_cycle_let");
-            s = table.getField(cycle, "key_cycle_let."+cyclePk,
-                    "width:80px; font-weight:bolder; font-size:14pt; "+backColorHead)
-                    + table.getField(rs.getString("name_c"), "name_c",
+            s = table.getField(cycle, "cycle-"+cyclePk,
+                    "width:80px; font-weight:bolder; font-size:14pt; "+backColorHead, "cycle-head");
+            s+= table.getField(rs.getString("name_c"), "namec-"+cyclePk,
                     "width: 600px; font-weight:bolder; font-size:14pt; "+backColorHead);
         }
         rs.close();
@@ -57,9 +53,9 @@ public class SubjectGenerate {
         ResultSet rs = statement.executeQuery("SELECT key_parts_let, name_p FROM parts WHERE key_parts_pk = "+part);
         while(rs.next()){
             keypart=rs.getString("key_parts_let");
-            s= cycle + "." + table.getField(rs.getString("key_parts_let"), "key_parts_let."+part,
+            s= cycle + "." + table.getField(rs.getString("key_parts_let"), "keylet-"+part,
                     "width:50px; font-weight:bold;font-size:12pt; " + backColorHead)
-                    + table.getField(rs.getString("name_p"), "name_p." + part,
+                    + table.getField(rs.getString("name_p"), "namep-" + part,
                     "width:600px; font-weight:bold;font-size:12pt; " + backColorHead);
         }
         rs.close();
@@ -73,15 +69,14 @@ public class SubjectGenerate {
     public String getSubjects(int keyPart) throws SQLException{
         String s="";
         Statement statement = connection.createStatement();
-        statement.execute("SELECT create_sub("+keyPart+");");
-        ResultSet rs = statement.executeQuery("SELECT * FROM get_subjects");
+        ResultSet rs = statement.executeQuery("SELECT * FROM get_subjects WHERE key_parts_fk = "+keyPart+" ORDER BY key_subject");
         ResultSetMetaData rsmt = rs.getMetaData();
         int cols = rsmt.getColumnCount();
-        int summ[] = new int[cols-4];
+        int summ[] = new int[cols-5];
         while(rs.next()){
             int pk = rs.getInt(1);
             s+="<tr>";
-            //номер, шифр и департамент
+            //номер, название и шифр
             s+=subjectsBCollsGen(rs, pk);
             //остальные колонки
             s+=subjectsCollsGen(rs, cols, pk, summ);
@@ -93,34 +88,39 @@ public class SubjectGenerate {
         return s;
     }
 
-    /*номер, шифр и департамент*/
+    /*номер, название и шифр*/
     private String subjectsBCollsGen(ResultSet rs, int pk) throws SQLException{
         String s="";
-        double num = rs.getDouble(2);
+        double num = rs.getDouble(3);
         //номер
         if((num*10)!=((int)num)*10)
-            s+="<td style=\""+backColorHead+"\">"+cycle+"."+keypart+table.getField(num+"", 2+"-"+pk,"width:30px;"
+            s+="<td style=\""+backColorHead+"\">"+cycle+"."+keypart+table.getField(num+"", 3+"-"+pk,"width:30px;"
                     +leftFields+backColorHead)+"</td>";
         else
-            s+="<tr><td>"+cycle+"."+keypart+table.getField((int)num+"", 2+"-"+pk,"width:30px;"+leftFields)+"</td>";
+            s+="<tr><td>"+cycle+"."+keypart+table.getField((int)num+"", 3+"-"+pk,"width:30px;"+leftFields)+"</td>";
+        //название дисциплины
+        s+="<td>"+table.getField(rs.getString(4), 4+"-"+pk,"width:300px")+"</td>";
         //шифр кафедры
-        s+="<td>"+table.getField(rs.getString(3), 3+"-"+pk,"width:300px")+"</td>";
-        //департамент
-        s+="<td>"+table.getField(department.get(rs.getInt(4)-1), 4+"-"+pk,"width:55px")+"</td>";
+        s+="<td>"+table.getField(department.get(rs.getInt(5)-1), 5+"-"+pk,"width:55px")+"</td>";
         return s;
     }
 
     /*остальные subject и assignment_subjects*/
     private String subjectsCollsGen(ResultSet rs, int cols, int pk, int summ[]) throws SQLException{
         String s="";
-        int j =0;
-        for(int i=5; i<=cols;i++) {
+        int j = 0;
+        int k = 6;
+        for(int i=6; i<=cols;i++) {
             String col = rs.getString(i);
-            if(col==null)
+            if(col==null) {
                 s += "<td style=\"color:#b1b1b1\">0</td>";
-            else {
-                s += "<td>"+ table.getField(col, i+"-"+pk,"width:20px") +"</td>";
+            }else if(i==8||i==9||i==13){
+                s += "<td>"+col+"</td>";
                 summ[j]+=Integer.parseInt(col);
+            }else {
+                s += "<td>"+ table.getField(col, k+"-"+pk,"width:22px") +"</td>";
+                summ[j]+=Integer.parseInt(col);
+                k++;
             }
             j++;
         }
@@ -129,7 +129,7 @@ public class SubjectGenerate {
 
     private String summTable(int summ[]){
         String s="";
-        s+="<tr style=\"" + backColorHead + "\"><td colspan=\"3\">ИТОГО:</td>";
+        s+="<tr style=\"" + backColorHead + "\"><td colspan=\"3\"><b>ИТОГО:</b></td>";
         for(int i=0;i<summ.length;i++)
             s+="<td>"+summ[i]+"</td>";
         s+="</tr>";
@@ -138,7 +138,7 @@ public class SubjectGenerate {
 
     public String summPage(int cyclePk) throws SQLException{
         String s="";
-        s+="<tr style=\""+backColorHead+"\"><td colspan=\"3\">ИТОГО ПО ЦИКЛУ:</td>";
+        s+="<tr style=\""+backColorHead+"\"><td colspan=\"3\"><b>ИТОГО ПО ЦИКЛУ:</b></td>";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM summ_sub("+cyclePk+")");
         while(rs.next()){

@@ -11,13 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-/**
- * Created by Shishko.Arthur on 14.01.2018.
- */
 @WebServlet(name = "TitlePost")
 public class TitlePost extends HttpServlet {
     Connection connection;
-    Statement statement;
+    Statement st;
+    Statement upSt;
     /**
      * Обновляем титул
      */
@@ -26,13 +24,16 @@ public class TitlePost extends HttpServlet {
         try {
             Database database = new Database();
             connection = database.getConnection();
-            statement = connection.createStatement();
+            st = connection.createStatement();
+            upSt = connection.createStatement();
             placeHead(request);
             placeMatrixShedulesUp(request);
             placePractics(request);
             placeStateAttestaion(request);
+            st.close();
+            upSt.executeBatch();
+            upSt.close();
             connection.close();
-            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,25 +45,25 @@ public class TitlePost extends HttpServlet {
      * Вносим изменения в вверхний титул
      */
     private void placeHead(HttpServletRequest request) throws SQLException{
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM titles");
+        ResultSet resultSet = st.executeQuery("SELECT * FROM titles");
         while (resultSet.next()) {
             if (!request.getParameter("yearCreation").equals(resultSet.getString("year_creation")))
-                update("UPDATE titles SET year_creation = " + request.getParameter("yearCreation"));
+                upSt.addBatch("UPDATE titles SET year_creation = " + request.getParameter("yearCreation"));
             if (!request.getParameter("qualification").equals(resultSet.getString("qualification")))
-                update("UPDATE titles SET qualification = '" + request.getParameter("qualification") + "'");
+                upSt.addBatch("UPDATE titles SET qualification = '" + request.getParameter("qualification") + "'");
             if (!request.getParameter("termsEducation").equals(resultSet.getString("terms_education")))
-                update("UPDATE titles SET terms_education = " + request.getParameter("termsEducation"));
+                upSt.addBatch("UPDATE titles SET terms_education = " + request.getParameter("termsEducation"));
             if (!request.getParameter("yearReception").equals(resultSet.getString("year_reception")))
-                update("UPDATE titles SET year_reception = " + request.getParameter("yearReception"));
+                upSt.addBatch("UPDATE titles SET year_reception = " + request.getParameter("yearReception"));
             if (!request.getParameter("lvlEducation").equals(resultSet.getString("lvl_education")))
-                update("UPDATE titles SET lvl_education = '" + request.getParameter("lvlEducation") + "'");
+                upSt.addBatch("UPDATE titles SET lvl_education = '" + request.getParameter("lvlEducation") + "'");
             if (!request.getParameter("formEducation").equals(resultSet.getString("form_education")))
-                update("UPDATE titles SET form_education = '" + request.getParameter("formEducation") + "'");
+                upSt.addBatch("UPDATE titles SET form_education = '" + request.getParameter("formEducation") + "'");
         }
-        resultSet = statement.executeQuery("SELECT * FROM profiles");
+        resultSet = st.executeQuery("SELECT * FROM profiles");
         while (resultSet.next()) {
             if (!request.getParameter("name_prof").equals(resultSet.getString("name_prof")))
-                update("UPDATE profiles SET name_prof = '" + request.getParameter("name_prof")+"'");
+                upSt.addBatch("UPDATE profiles SET name_prof = '" + request.getParameter("name_prof")+"'");
         }
         resultSet.close();
     }
@@ -71,30 +72,30 @@ public class TitlePost extends HttpServlet {
      * Вносим изменения в таблицу - график учебного процесса
      */
     private void placeMatrixShedulesUp(HttpServletRequest request) throws SQLException{
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
+        ResultSet resultSet = st.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
         int i=0;
         while (resultSet.next()) {
             if (!request.getParameter("week_msa"+i).equals(resultSet.getString("week_msa")))
-                update("UPDATE matrix_schedules_ap SET week_msa = " + request.getParameter("week_msa" + i)
+                upSt.addBatch("UPDATE matrix_schedules_ap SET week_msa = " + request.getParameter("week_msa" + i)
                         + " WHERE key_matr_sch_ap_pk = " + (i+1));
             if(!request.getParameter("date_start"+i).equals(resultSet.getString("date_start")))
-                update("UPDATE matrix_schedules_ap SET date_start = " + request.getParameter("date_start" + i)
+                upSt.addBatch("UPDATE matrix_schedules_ap SET date_start = " + request.getParameter("date_start" + i)
                         + " WHERE key_matr_sch_ap_pk = " + (i+1));
             if(!request.getParameter("date_end"+i).equals(resultSet.getString("date_end")))
-                update("UPDATE matrix_schedules_ap SET date_end = " + request.getParameter("date_end" + i)
+                upSt.addBatch("UPDATE matrix_schedules_ap SET date_end = " + request.getParameter("date_end" + i)
                         + " WHERE key_matr_sch_ap_pk = " + (i+1));
             if(i>50) break;
             i++;
         }
-        resultSet = statement.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
+        resultSet = st.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
         i=0;
         while (resultSet.next()) {
             if(!request.getParameter("label_msa" + i).equals(resultSet.getString("label_msa"))) {
                 if(request.getParameter("label_msa" + i).equals("")&&resultSet.getString("label_msa")==null) {}
                 else if(request.getParameter("label_msa" + i).equals("")&&resultSet.getString("label_msa")!=null)
-                    update("UPDATE matrix_schedules_ap SET label_msa = null WHERE key_matr_sch_ap_pk = " + (i + 1));
+                    upSt.addBatch("UPDATE matrix_schedules_ap SET label_msa = null WHERE key_matr_sch_ap_pk = " + (i + 1));
                 else
-                    update("UPDATE matrix_schedules_ap SET label_msa = '" + request.getParameter("label_msa" + i)
+                    upSt.addBatch("UPDATE matrix_schedules_ap SET label_msa = '" + request.getParameter("label_msa" + i)
                             + "' WHERE key_matr_sch_ap_pk = " + (i + 1));
             }
             if(i>206) break;
@@ -107,19 +108,19 @@ public class TitlePost extends HttpServlet {
      * Вносим изменения в таблицу практики
      */
     private void placePractics(HttpServletRequest request) throws SQLException {
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM pract_types ORDER BY key_pract_pk");
+        ResultSet resultSet = st.executeQuery("SELECT * FROM pract_types ORDER BY key_pract_pk");
         int i=0;
         while (resultSet.next()) {
             if (!request.getParameter("name_pt"+i).equals(resultSet.getString("name_pt")))
-                update("UPDATE pract_types SET name_pt = '" + request.getParameter("name_pt" + i)
+                upSt.addBatch("UPDATE pract_types SET name_pt = '" + request.getParameter("name_pt" + i)
                         + "' WHERE key_pract_pk = " + (i+1));
             i++;
         }
-        resultSet = statement.executeQuery("SELECT * FROM pract ORDER BY key_pract_pk");
+        resultSet = st.executeQuery("SELECT * FROM pract ORDER BY key_pract_pk");
         i=0;
         while (resultSet.next()) {
             if (!request.getParameter("key_week_count"+i).equals(resultSet.getString("key_week_count")))
-                update("UPDATE pract SET key_week_count = " + request.getParameter("key_week_count" + i)
+                upSt.addBatch("UPDATE pract SET key_week_count = " + request.getParameter("key_week_count" + i)
                         + " WHERE key_pract_pk = " + (i+1));
             i++;
         }
@@ -130,22 +131,22 @@ public class TitlePost extends HttpServlet {
      * Вносим изменения в таблицу Государственной Аттестации
      */
     private void placeStateAttestaion(HttpServletRequest request) throws SQLException{
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM state_certification_types ORDER BY key_sc_pk");
+        ResultSet resultSet = st.executeQuery("SELECT * FROM state_certification_types ORDER BY key_sc_pk");
         int i=0;
         while (resultSet.next()) {
             if (!request.getParameter("form_sct"+i).equals(resultSet.getString("form_sct")))
-                update("UPDATE state_certification_types SET form_sct = '" + request.getParameter("form_sct" + i)
+                upSt.addBatch("UPDATE state_certification_types SET form_sct = '" + request.getParameter("form_sct" + i)
                         + "' WHERE key_sc_pk = " + (i+1));
             if (!request.getParameter("name_sct"+i).equals(resultSet.getString("name_sct")))
-                update("UPDATE state_certification_types SET name_sct = '" + request.getParameter("name_sct" + i)
+                upSt.addBatch("UPDATE state_certification_types SET name_sct = '" + request.getParameter("name_sct" + i)
                         + "' WHERE key_sc_pk = " + (i+1));
             i++;
         }
-        resultSet = statement.executeQuery("SELECT * FROM state_certification ORDER BY key_sc_pk");
+        resultSet = st.executeQuery("SELECT * FROM state_certification ORDER BY key_sc_pk");
         i=0;
         while (resultSet.next()) {
             if (!request.getParameter("semester_sc"+i).equals(resultSet.getString("semester_sc")))
-                update("UPDATE state_certification SET semester_sc = " + request.getParameter("semester_sc" + i)
+                upSt.addBatch("UPDATE state_certification SET semester_sc = " + request.getParameter("semester_sc" + i)
                         + " WHERE key_sc_pk = " + (i+1));
             i++;
         }
@@ -158,21 +159,6 @@ public class TitlePost extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("title.jsp");
         if (dispatcher != null) {
             dispatcher.forward(request, response);
-        }
-    }
-
-    /**
-     * Функция реализации запроса
-     * @param row - строка запроса
-     */
-    public void update(String row){
-        Statement statement1;
-        try {
-            statement1 = connection.createStatement();
-            statement1.executeUpdate(row);
-            statement1.close();
-        }catch (SQLException e){
-            new RuntimeException(e);
         }
     }
 }
