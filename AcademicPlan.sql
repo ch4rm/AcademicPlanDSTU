@@ -638,35 +638,35 @@ CREATE OR REPLACE FUNCTION create_sub(cyclefk int)
 	DROP TABLE IF EXISTS get_subjects;
    		CREATE TABLE get_subjects AS
 		select
-	key_subject_pk
-  , key_parts_fk	
+  key_subject_pk
+  , key_parts_fk
   , key_subject
   , name_s
-  , key_department_fk
+  , d.key_department
+  , (sum(hour_lec_sa*18) + sum(hour_lab_sa*18) + sum(hour_prac_sa*18) + sum(hour_self_sa*18))/36 as ze
   , exams_s
   , setoff_s
-  , lect_s + lab_s + pract_s + ksr_s + bsr_s as sum_all
-  , lect_s + lab_s + pract_s as sum_llp
-  , lect_s
-  , lab_s
-  , pract_s
-  , ksr_s + bsr_s as sum_kb
-  , ksr_s
+  , sum(hour_lec_sa*18) + sum(hour_lab_sa*18) + sum(hour_prac_sa*18) + sum(hour_self_sa*18) as sum_all
+  , sum(hour_lec_sa*18) + sum(hour_lab_sa*18) + sum(hour_prac_sa*18) as sum_llp
+  , sum(hour_lec_sa*18) as lect_s
+  , sum(hour_lab_sa*18) as lab_s
+  , sum(hour_prac_sa*18) as pract_s
+  , sum(hour_self_sa*18) as sum_kb
+  , sum(hour_self_sa*18) as ksr_s
   , bsr_s
-  
   , sum(case when semester_num_sa = 1 then hour_lec_sa end) as hour_lec_sa_1
   , sum(case when semester_num_sa = 1 then hour_lab_sa end) as hour_lab_sa_1
-  , sum(case when semester_num_sa = 1 then hour_prac_sa end) as hour_prac_sa_1 
+  , sum(case when semester_num_sa = 1 then hour_prac_sa end) as hour_prac_sa_1
   , sum(case when semester_num_sa = 1 then hour_self_sa end) as hour_self_sa_1
-
+  
   , sum(case when semester_num_sa = 2 then hour_lec_sa end) as hour_lec_sa_2
   , sum(case when semester_num_sa = 2 then hour_lab_sa end) as hour_lab_sa_2
-  , sum(case when semester_num_sa = 2 then hour_prac_sa end) as hour_prac_sa_2 
+  , sum(case when semester_num_sa = 2 then hour_prac_sa end) as hour_prac_sa_2
   , sum(case when semester_num_sa = 2 then hour_self_sa end) as hour_self_sa_2
 
   , sum(case when semester_num_sa = 3 then hour_lec_sa end) as hour_lec_sa_3
   , sum(case when semester_num_sa = 3 then hour_lab_sa end) as hour_lab_sa_3
-  , sum(case when semester_num_sa = 3 then hour_prac_sa end) as hour_prac_sa_3 
+  , sum(case when semester_num_sa = 3 then hour_prac_sa end) as hour_prac_sa_3
   , sum(case when semester_num_sa = 3 then hour_self_sa end) as hour_self_sa_3
 
   , sum(case when semester_num_sa = 4 then hour_lec_sa end) as hour_lec_sa_4
@@ -676,17 +676,17 @@ CREATE OR REPLACE FUNCTION create_sub(cyclefk int)
   
   , sum(case when semester_num_sa = 5 then hour_lec_sa end) as hour_lec_sa_5
   , sum(case when semester_num_sa = 5 then hour_lab_sa end) as hour_lab_sa_5
-  , sum(case when semester_num_sa = 5 then hour_prac_sa end) as hour_prac_sa_5 
+  , sum(case when semester_num_sa = 5 then hour_prac_sa end) as hour_prac_sa_5
   , sum(case when semester_num_sa = 5 then hour_self_sa end) as hour_self_sa_5
 
   , sum(case when semester_num_sa = 6 then hour_lec_sa end) as hour_lec_sa_6
   , sum(case when semester_num_sa = 6 then hour_lab_sa end) as hour_lab_sa_6
-  , sum(case when semester_num_sa = 6 then hour_prac_sa end) as hour_prac_sa_6 
+  , sum(case when semester_num_sa = 6 then hour_prac_sa end) as hour_prac_sa_6
   , sum(case when semester_num_sa = 6 then hour_self_sa end) as hour_self_sa_6
 
   , sum(case when semester_num_sa = 7 then hour_lec_sa end) as hour_lec_sa_7
   , sum(case when semester_num_sa = 7 then hour_lab_sa end) as hour_lab_sa_7
-  , sum(case when semester_num_sa = 7 then hour_prac_sa end) as hour_prac_sa_7 
+  , sum(case when semester_num_sa = 7 then hour_prac_sa end) as hour_prac_sa_7
   , sum(case when semester_num_sa = 7 then hour_self_sa end) as hour_self_sa_7
 
   , sum(case when semester_num_sa = 8 then hour_lec_sa end) as hour_lec_sa_8
@@ -697,70 +697,14 @@ from
   subjects s
   inner join subject_assignment a
     on s.key_subject_pk = a.key_subject_fk
+	inner join departments d
+    on s.key_department_fk = d.key_department_pk
   where s.key_cycle_fk = '||cyclefk||'
 group by
-  key_subject_pk
+  key_subject_pk, key_department_pk
 order by key_subject;');
 END
 $func$ LANGUAGE plpgsql;
-
-
-CREATE OR REPLACE FUNCTION summ_sub(keyf integer) RETURNS TABLE (summ smallint)
-AS $$  
-BEGIN
-	SELECT SUM(exams_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(setoff_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(lect_s) + SUM(lab_s) + SUM(pract_s) + SUM(ksr_s) + SUM(bsr_S) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(lect_s) + SUM(lab_s) + SUM(pract_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(lect_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(lab_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(pract_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(ksr_s) + SUM(bsr_S) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(ksr_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	SELECT SUM(bsr_s) INTO summ FROM subjects WHERE key_cycle_fk = keyf;	RETURN NEXT;
-	
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=1;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=1;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=1;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=1;	RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=2;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=2;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=2;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=2;	RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=3;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=3;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=3;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=3;      RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=4;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=4;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=4;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=4;	RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=5;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=5;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=5;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=5;	RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=6;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=6;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=6;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=6;	RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=7;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=7;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=7;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=7;	RETURN NEXT;
-
-	SELECT SUM(hour_lec_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=8;	RETURN NEXT;
-	SELECT SUM(hour_lab_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=8;	RETURN NEXT;
-	SELECT SUM(hour_prac_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=8;	RETURN NEXT;
-	SELECT SUM(hour_self_sa) INTO summ FROM subject_assignment WHERE key_type_fk = keyf AND semester_num_sa=8;	RETURN NEXT;
-END
-$$ 
-LANGUAGE plpgsql;
 
 
 

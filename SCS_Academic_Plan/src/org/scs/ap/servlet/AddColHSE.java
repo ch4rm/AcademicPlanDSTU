@@ -40,26 +40,17 @@ public class AddColHSE extends HttpServlet {
             Database database = new Database();
             Connection connection = database.getConnection();
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM departments");
-            while (rs.next()) {
-                int dpk = rs.getInt(1);
-                if (dep.equalsIgnoreCase(rs.getString(2))) {
-                    if (!part.equals("") && !names.equals("")) {
-                        rs = st.executeQuery("select MAX(key_subject) from subjects where key_cycle_fk=");
 
-                        Statement statement = connection.createStatement();
+            System.out.println(cyclen);
+            System.out.println(part);
+            System.out.println(names);
+            System.out.println(dep);
 
 
-                        statement.close();
-                    }
-
-                } else {
-                }
-            }
-            rs.close();
             st.close();
             connection.close();
         }catch (Exception e){
+
         }
     }
 }

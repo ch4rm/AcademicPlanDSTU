@@ -38,28 +38,29 @@
             <tr>
                 <td rowspan="4" style="width: 90px"><%=content.get(0)%></td>
                 <td rowspan="4" style="width: 300px"><%=content.get(1)%></td>
-                <td rowspan="4" style="width: 50px" class="rotatable"><%=content.get(2)%></td>
+                <td rowspan="4" style="width: 55px" class="rotatable"><%=content.get(2)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(3)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(4)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(5)%></td>
-                <td colspan="7"><%=content.get(6)%></td>
+                <td rowspan="4" style="width: 25px" class="rotatable"><%=content.get(6)%></td>
+                <td colspan="7" style="width: 270px"><%=content.get(7)%></td>
                 <td colspan="32">
-                    <%=content.get(7)%>
+                    <%=content.get(8)%>
                 </td>
             </tr>
             <%=mns.headTable()%>
             <tr>
-                <td colspan="45" style="<%=backColorHead%>"><%=mns.getCycle(cycle)%></td>
+                <td colspan="46" style="<%=backColorHead%>"><%=mns.getCycle(cycle)%></td>
             </tr>
             <tr>
-                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=mns.getParts(parts[0])%></td>
+                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=mns.getParts(parts[0])%></td>
             </tr>
             <%=mns.getSubjects(parts[0])%>
             <tr>
-                <td colspan="45" style="font-weight:bolder; <%=backColorHead%>"><%=mns.getParts(parts[1])%></td>
+                <td colspan="46" style="font-weight:bolder; <%=backColorHead%>"><%=mns.getParts(parts[1])%></td>
             </tr>
             <%=mns.getSubjects(parts[1])%>
-            <%=mns.summPage(cycle)%>
+            <%=mns.summPage()%>
         </table>
     </div>
     <div style="width: 1800px; height: 100px; bottom:0;">

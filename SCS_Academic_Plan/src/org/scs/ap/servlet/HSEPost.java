@@ -9,31 +9,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 
 @WebServlet(name = "HSEPost")
 public class HSEPost extends HttpServlet {
     private Connection connection;
-    //Имена полей в get_subjects
-    private String subjectsNames[] = {"exams_s", "setoff_s", "sum_all", "sum_llp", "lect_s", "lab_s", "pract_s",
-            "sum_kb", "ksr_s", "bsr_s"};
     //Имена полей в subject_assignment
     private String subjectsNamesAsgn[]={"hour_lec_sa", "hour_lab_sa", "hour_prac_sa","hour_self_sa"};
-    private ArrayList<String> department = new ArrayList<>();
     //номер поля key_subject_pk
     private int isubjectPk;
     //номер поля key_subject
     private int ikeySubject;
     //номер поля name_s
     private int inameS;
-    //номер поля key_department_fk
-    private int ikeyDepartmentFk;
-
-    /**
-     * 8, 9, 13 - номер полей в get_subjects для расчёта суммы
-     * с 6го запись в subjects
-     * с 16го запись в subjects_assignment
-     */
+    //номер поля exams_s
+    private int iexams;
+    //номер поля setoff_s
+    private int isetoff;
+    //имя первого поля subject_assignment
+    private int bSubAssign;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -43,21 +36,16 @@ public class HSEPost extends HttpServlet {
     }
 
     public void postAction(HttpServletRequest request, HttpServletResponse response, int cycle)  throws ServletException, IOException {
-        //Объявление полей
         isubjectPk=1;
         ikeySubject=3;
         inameS=4;
-        ikeyDepartmentFk=5;
+        iexams=5;
+        isetoff=6;
+        bSubAssign= 7;
+
         Database database = new Database();
         connection = database.getConnection();
         try{
-            //Список департаментов
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT key_department FROM departments ORDER BY key_department_pk");
-            while (resultSet.next())
-                department.add(resultSet.getString("key_department"));
-            statement.close();
-            resultSet.close();
             connection.setAutoCommit(false);
             Statement st = connection.createStatement();
             //Обновление cycle
@@ -68,6 +56,7 @@ public class HSEPost extends HttpServlet {
             updateSubjects(request, st, cycle);
             st.executeBatch();
             st.close();
+            connection.setAutoCommit(true);
             connection.close();
         }catch(SQLException e){}
     }
@@ -82,10 +71,12 @@ public class HSEPost extends HttpServlet {
              if(!rs.getString(2).equals(request.getParameter("cycle-"+cycle)))
                  st.addBatch("UPDATE cycles SET key_cycle_let = '" + request.getParameter("cycle-" + cycle)
                          + "' WHERE key_cycle_pk = " + cycle + ";");
-            if(!rs.getString(3).equals(request.getParameter("namec-"+cycle)))
+            if(!rs.getString(3).equals(request.getParameter("namec-"+cycle))) {
                 st.addBatch("UPDATE cycles SET name_c = '" + request.getParameter("namec-" + cycle)
                         + "' WHERE key_cycle_pk = " + cycle + ";");
-
+                System.out.println("UPDATE cycles SET name_c = '" + request.getParameter("namec-" + cycle)
+                        + "' WHERE key_cycle_pk = " + cycle + ";");
+            }
         }
         rs.close();
         ust.close();
@@ -116,7 +107,6 @@ public class HSEPost extends HttpServlet {
      */
     private void updateSubjects(HttpServletRequest request, Statement st, int cycle) throws SQLException {
         Statement mainSt = connection.createStatement();
-
         mainSt.execute("SELECT create_sub("+cycle+");");
         ResultSet rs = mainSt.executeQuery("SELECT * FROM get_subjects ORDER BY key_subject_pk");
         while(rs.next()){
@@ -125,15 +115,12 @@ public class HSEPost extends HttpServlet {
             updateKeySubject(request, st, rs, pk);
             //Обновление name_s
             updateName(request, st, rs, pk);
-            //Обновление departments
-            updateDepartment(request, st, rs, pk);
             //Остальной subject
             updateSubjects(request, st, rs, pk);
             //subject_assignment
             updateSubjectAssign(request, st, rs, pk);
         }
         rs.close();
-        connection.setAutoCommit(true);
         mainSt.close();
     }
 
@@ -156,30 +143,13 @@ public class HSEPost extends HttpServlet {
     }
 
     /**
-     * Внос изменений в key_department_fk
-     */
-    private void updateDepartment(HttpServletRequest request, Statement st, ResultSet rs, int pk) throws SQLException {
-        if(!department.get(rs.getInt(ikeyDepartmentFk)-1).equals(request.getParameter(ikeyDepartmentFk + "-" + pk))) {
-            st.addBatch("UPDATE departments SET key_department = '" + request.getParameter(ikeyDepartmentFk + "-" + pk)
-                    + "' WHERE key_department_pk = " + rs.getInt(ikeyDepartmentFk)+";");
-        }
-    }
-
-    /**
      * Внос изменений в subjects
      */
     private void updateSubjects(HttpServletRequest request, Statement st, ResultSet rs, int pk) throws SQLException{
-        int j=0;
-        int k=6;
-        for(int i=6; i<subjectsNames.length+6;i++) {
-            if(i!=8 && i!=9 && i!=13) {
-                if(!rs.getString(i).equals(request.getParameter(k + "-" + pk)))
-                    st.addBatch("UPDATE subjects SET " + subjectsNames[j] + " = '" + request.getParameter(k + "-" + pk)
-                            + "' WHERE key_subject_pk = " + pk);
-                k++;
-            }
-            j++;
-        }
+        if(!rs.getString(iexams).equals(request.getParameter(iexams + "-" + pk)))
+            st.addBatch("UPDATE subjects SET exams_s = '" + request.getParameter(iexams + "-" + pk)+"' WHERE key_subject_pk = "+pk);
+        if(!rs.getString(isetoff).equals(request.getParameter(isetoff + "-" + pk)))
+            st.addBatch("UPDATE subjects SET setoff_s = '" + request.getParameter(isetoff + "-" + pk)+"' WHERE key_subject_pk = "+pk);
     }
 
     /**
@@ -188,8 +158,8 @@ public class HSEPost extends HttpServlet {
     private void updateSubjectAssign(HttpServletRequest request, Statement st, ResultSet rs, int pk) throws SQLException {
         ResultSetMetaData rsmd = rs.getMetaData();
         int j=0;
-        int k=13;
-        for(int i=16; i<rsmd.getColumnCount();i++){
+        int k=bSubAssign;
+        for(int i=17; i<rsmd.getColumnCount();i++){
             if(rs.getString(i)!=null){
                 if(!rs.getString(i).equals(request.getParameter(k + "-" + pk))){
                     st.addBatch("UPDATE subject_assignment SET " + subjectsNamesAsgn[j] + " = '" + request.getParameter(k + "-" + pk)

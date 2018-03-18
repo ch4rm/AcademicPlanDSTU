@@ -8,7 +8,9 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
+      <introspection-schemas>AcademicPlan:public</introspection-schemas>
       <resolve-scope>AcademicPlan:postgres,public</resolve-scope>
+      <unqualified-resolve-schemas>AcademicPlan:postgres,public</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>
