@@ -29,7 +29,7 @@
         <jarDirectory url="file://C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="postgresql-42.1.4" level="project" />
     <orderEntry type="library" name="javax.servlet" level="project" />
+    <orderEntry type="library" name="postgresql-42.2.2.jre7" level="project" />
   </component>
 </module>

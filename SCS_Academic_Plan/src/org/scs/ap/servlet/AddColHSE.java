@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -35,8 +34,8 @@ public class AddColHSE extends HttpServlet {
         String part = request.getParameter("part-name");
         String names = request.getParameter("dist-name");
         String dep = request.getParameter("dep-name");
+        String sem = request.getParameter("sem-num");
         try {
-            int num = Integer.parseInt(request.getParameter("sem-num"));
             Database database = new Database();
             Connection connection = database.getConnection();
             Statement st = connection.createStatement();
@@ -45,7 +44,7 @@ public class AddColHSE extends HttpServlet {
             System.out.println(part);
             System.out.println(names);
             System.out.println(dep);
-
+            System.out.println(sem);
 
             st.close();
             connection.close();

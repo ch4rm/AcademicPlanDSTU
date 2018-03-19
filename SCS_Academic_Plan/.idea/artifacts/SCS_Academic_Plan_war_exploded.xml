@@ -33,7 +33,8 @@
           <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util-scan.jar" />
           <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-websocket.jar" />
           <element id="file-copy" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-storeconfig.jar" />
-          <element id="library" level="project" name="postgresql-42.1.4" />
+          <element id="library" level="project" name="javax.servlet" />
+          <element id="library" level="project" name="postgresql-42.2.2.jre7" />
         </element>
       </element>
     </root>

@@ -7,11 +7,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    ArrayList<String> part_pk = new ArrayList<>();
+    ArrayList<String> part = new ArrayList<>();
     ArrayList<String> dp = new ArrayList<>();
     Statement st = connection.createStatement();
-    ResultSet rs = st.executeQuery("SELECT * FROM departments");
+    ResultSet rs = st.executeQuery("SELECT key_department FROM departments");
     while(rs.next())
-        dp.add(rs.getString(2));
+        dp.add(rs.getString(1));
+    rs = st.executeQuery("SELECT key_parts_pk, key_parts_let FROM parts WHERE key_cycle_fk="+cycle);
+    while(rs.next()) {
+        part_pk.add(rs.getString(1));
+        part.add(rs.getString(2));
+    }
     st.close();
     rs.close();
 %>
@@ -36,7 +43,12 @@
             <table class="popup-table">
                 <tr><td style="text-align:center;" colspan="2">Добавить строку в цикл <input type="text" id="cycle-in"
                         name="cycle-in" class="text-field" style="font-size: 16pt; width: 30px;" >:</td></tr>
-                <tr><td>Имя части (Б/В): </td><td><input type="text" name="part-name" class="text-field-n"></td></tr>
+                <tr><td>Имя части: </td><td>
+                    <select name="part-name" class="text-field-n">
+                        <option value="<%=part_pk.get(0)%>"><%=part.get(0)%></option>
+                        <option value="<%=part_pk.get(1)%>"><%=part.get(1)%></option>
+                    </select>
+                </td></tr>
                 <tr><td>Название Дисциплины: </td><td><input type="text" name="dist-name" class="text-field-n"></td></tr>
                 <tr><td>Шифр кафедры: </td><td>
                     <select name="dep-name" class="text-field-n">
@@ -51,7 +63,18 @@
                         <option value="9"><%=dp.get(8)%></option>
                     </select>
                 </td></tr>
-                <tr><td>Номер семестра: </td><td><input type="text" name="sem-num" class="text-field-n"></td></tr>
+                <tr><td>Номер семестра: </td><td>
+                    <select name="sem-num" class="text-field-n">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </td></tr>
                 <tr><td></td><td><input type="submit" class="save-button addb" value="Добавить"/></td></tr>
             </table>
         </form>

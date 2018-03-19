@@ -1,6 +1,9 @@
 package org.scs.ap.database;
 
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public final class Database {
     private static String url = "jdbc:postgresql://127.0.0.1:5432/AcademicPlan?charSet=UNICODE";
