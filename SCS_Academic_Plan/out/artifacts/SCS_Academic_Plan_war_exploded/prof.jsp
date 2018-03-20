@@ -69,6 +69,5 @@
         <input type="button" name="add" class="save-button addb" value="Добавить" onclick="addCol();"/>
         <input type="button" name="remove" class="save-button remove" value="Удалить" onclick="delCol();"/>
     </div>
-    <% connection.close(); %>
 </form>
 <%@ include file="bottom-container.jsp" %>

@@ -1,9 +1,8 @@
 <%@ page import="org.scs.ap.content.SubjectGenerate" %>
-<%@ page import="org.scs.ap.database.Database" %>
-<%@ page import="java.sql.Connection" %>
 <%@ page import="org.scs.ap.view.Config" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.Statement" %><%--
+<%@ page import="java.sql.Statement" %>
+<%@ page import="static org.scs.ap.servlet.Login.db" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 14.01.2018
@@ -16,11 +15,9 @@
     int cycle = 1;
     int parts[] = {1, 2};
 
-    Database database = new Database();
-    Connection connection = database.getConnection();
-    Statement statement = connection.createStatement();
+    Statement statement = db.getConnection().createStatement();
     statement.execute("SELECT create_sub("+cycle+");");
-    SubjectGenerate hse = new SubjectGenerate(connection,backColorHead);
+    SubjectGenerate hse = new SubjectGenerate(db.getConnection(),backColorHead);
     Config cfg = new Config();
     ArrayList<String> content = cfg.getArrayXml("table-hmp");
     statement.close();
@@ -68,6 +65,5 @@
         <input type="button" name="add" class="save-button addb" value="Добавить" onclick="addCol();"/>
         <input type="button" name="remove" class="save-button remove" value="Удалить" onclick="delCol();"/>
     </div>
-    <% connection.close(); %>
 </form>
 <%@ include file="bottom-container.jsp" %>

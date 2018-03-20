@@ -1,6 +1,5 @@
 package org.scs.ap.database;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,11 +10,19 @@ public final class Database {
     private static String password = "root";
     private static Connection connection;
 
+    public Database(){
+        connection = createConnection();
+    }
+
+    public Connection getConnection(){
+        return connection;
+    }
+
     public static void setName(String name){
         Database.name = name;
     }
 
-    public static Connection getConnection(){
+    public static Connection createConnection(){
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {

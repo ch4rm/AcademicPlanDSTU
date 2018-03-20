@@ -1,6 +1,5 @@
 package org.scs.ap.servlet;
 
-import org.scs.ap.database.Database;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
+import static org.scs.ap.servlet.Login.db;
+
 @WebServlet(name = "HSEPost")
 public class HSEPost extends HttpServlet {
-    private Connection connection;
+    private Connection connection = db.getConnection();
     //Имена полей в subject_assignment
     private String subjectsNamesAsgn[]={"hour_lec_sa", "hour_lab_sa", "hour_prac_sa","hour_self_sa"};
     //номер поля key_subject_pk
@@ -43,8 +44,6 @@ public class HSEPost extends HttpServlet {
         isetoff=6;
         bSubAssign= 7;
 
-        Database database = new Database();
-        connection = database.getConnection();
         try{
             connection.setAutoCommit(false);
             Statement st = connection.createStatement();
@@ -57,7 +56,6 @@ public class HSEPost extends HttpServlet {
             st.executeBatch();
             st.close();
             connection.setAutoCommit(true);
-            connection.close();
         }catch(SQLException e){}
     }
 

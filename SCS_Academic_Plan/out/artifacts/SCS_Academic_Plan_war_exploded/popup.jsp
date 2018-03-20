@@ -1,4 +1,5 @@
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="static org.scs.ap.servlet.Login.db" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 11.03.2018
@@ -7,14 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    ArrayList<String> part_pk = new ArrayList<>();
-    ArrayList<String> part = new ArrayList<>();
-    ArrayList<String> dp = new ArrayList<>();
-    Statement st = connection.createStatement();
+    ArrayList<String> part_pk = new ArrayList<String>();
+    ArrayList<String> part = new ArrayList<String>();
+    ArrayList<String> dp = new ArrayList<String>();
+    Statement st = db.getConnection().createStatement();
     ResultSet rs = st.executeQuery("SELECT key_department FROM departments");
     while(rs.next())
         dp.add(rs.getString(1));
-
     rs = st.executeQuery("SELECT key_parts_pk, key_parts_let FROM parts WHERE key_cycle_fk="+cycle);
     while(rs.next()) {
         part_pk.add(rs.getString(1));

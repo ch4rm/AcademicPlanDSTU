@@ -3,7 +3,8 @@
 <%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.scs.ap.view.Config" %>
-<%@ page import="java.sql.Statement" %><%--
+<%@ page import="java.sql.Statement" %>
+<%@ page import="static org.scs.ap.servlet.Login.db" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 14.01.2018
@@ -16,8 +17,7 @@
     int cycle = 2;
     int parts[] = {3, 4};
 
-    Database database = new Database();
-    Connection connection = database.getConnection();
+    Connection connection = db.getConnection();
     Statement statement = connection.createStatement();
     statement.execute("SELECT create_sub("+cycle+");");
     SubjectGenerate mns = new SubjectGenerate(connection,backColorHead);
@@ -68,6 +68,5 @@
         <input type="button" name="add" class="save-button addb" value="Добавить" onclick="addCol();"/>
         <input type="button" name="remove" class="save-button remove" value="Удалить" onclick="delCol();"/>
     </div>
-    <% connection.close(); %>
 </form>
 <%@ include file="bottom-container.jsp" %>

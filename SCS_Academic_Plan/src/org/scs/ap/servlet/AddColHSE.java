@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import static org.scs.ap.servlet.Login.db;
 
 /**
  * Created by User on 11.03.2018.
@@ -31,23 +35,45 @@ public class AddColHSE extends HttpServlet {
 
     public void postAction(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String cyclen = request.getParameter("cycle-in");
-        String part = request.getParameter("part-name");
+        int part = Integer.parseInt(request.getParameter("part-name"));
         String names = request.getParameter("dist-name");
-        String dep = request.getParameter("dep-name");
-        String sem = request.getParameter("sem-num");
+        int dep = Integer.parseInt(request.getParameter("dep-name"));
+        int sem = Integer.parseInt(request.getParameter("sem-num"));
         try {
-            Database database = new Database();
-            Connection connection = database.getConnection();
+            Connection connection = db.getConnection();
             Statement st = connection.createStatement();
+            //Номер цикла в базе
+            ResultSet rs = st.executeQuery("SELECT key_cycle_let FROM cycles");
+            int cycleNum=1;
+            while(rs.next()) {
+                if (cyclen.equals(rs.getString(1))) break;
+                cycleNum++;
+            }
+            if(cycleNum==0)
+                throw new Exception();
+            //Номер части в базе
+            rs = st.executeQuery("SELECT key_parts_pk FROM parts WHERE key_cycle_fk = "+cycleNum);
+            ArrayList<Integer> keyPartsPk = new ArrayList<>();
+            while(rs.next())
+                keyPartsPk.add(rs.getInt(1));
+            part=keyPartsPk.get(part-1);
+            //Масимальный номер части
+            rs = st.executeQuery("SELECT MAX(key_subject) FROM subjects WHERE key_parts_fk = "+part);
+            String keySubject="";
+            while(rs.next())
+                keySubject = rs.getString(1);
+            rs.close();
 
-            System.out.println(cyclen);
+            //st.executeUpdate("INSERT INTO ");
+            //st.executeUpdate("INSERT INTO ");
+            System.out.println(cycleNum);
             System.out.println(part);
             System.out.println(names);
             System.out.println(dep);
             System.out.println(sem);
+            System.out.println(keySubject);
 
             st.close();
-            connection.close();
         }catch (Exception e){
 
         }

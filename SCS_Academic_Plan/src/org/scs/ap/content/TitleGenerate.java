@@ -100,7 +100,7 @@ public class TitleGenerate {
     private void genWeek(Table table, String s, Statement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
         table.openRow();
-        ArrayList<String> str = new ArrayList<>();
+        ArrayList<String> str = new ArrayList<String>();
         while (resultSet.next())
             str.add(resultSet.getString(s));
         for(int i=0; i<52;i++)
@@ -114,7 +114,7 @@ public class TitleGenerate {
      */
     private void genLabelMsa(Table table, Statement statement) throws SQLException{
         ResultSet resultSet = statement.executeQuery("SELECT * FROM matrix_schedules_ap ORDER BY key_matr_sch_ap_pk");
-        ArrayList<String> str = new ArrayList<>();
+        ArrayList<String> str = new ArrayList<String>();
         while (resultSet.next())
             str.add(resultSet.getString("label_msa"));
         int name = 0, kurs=0;

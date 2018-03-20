@@ -1,7 +1,5 @@
 package org.scs.ap.servlet;
 
-import org.scs.ap.database.Database;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
+import static org.scs.ap.servlet.Login.db;
+
 @WebServlet(name = "TitlePost")
 public class TitlePost extends HttpServlet {
-    Connection connection;
+    Connection connection=db.getConnection();
     Statement st;
     Statement upSt;
     /**
@@ -22,8 +22,6 @@ public class TitlePost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         try {
-            Database database = new Database();
-            connection = database.getConnection();
             st = connection.createStatement();
             upSt = connection.createStatement();
             placeHead(request);
@@ -33,7 +31,6 @@ public class TitlePost extends HttpServlet {
             st.close();
             upSt.executeBatch();
             upSt.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
