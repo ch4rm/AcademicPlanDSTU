@@ -33,8 +33,28 @@
         <servlet-class>org.scs.ap.servlet.PROFPost</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddColHSE</servlet-name>
-        <servlet-class>org.scs.ap.servlet.AddColHSE</servlet-class>
+        <servlet-name>AddLineHSE</servlet-name>
+        <servlet-class>org.scs.ap.servlet.insert.AddLineHSE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddLineMNS</servlet-name>
+        <servlet-class>org.scs.ap.servlet.insert.AddLineMNS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddLinePROF</servlet-name>
+        <servlet-class>org.scs.ap.servlet.insert.AddLinePROF</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteLineHSE</servlet-name>
+        <servlet-class>org.scs.ap.servlet.delete.DeleteLineHSE</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteLineMNS</servlet-name>
+        <servlet-class>org.scs.ap.servlet.delete.DeleteLineMNS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteLinePROF</servlet-name>
+        <servlet-class>org.scs.ap.servlet.delete.DeleteLinePROF</servlet-class>
     </servlet>
 
     <!-- mapping -->
@@ -63,7 +83,27 @@
         <url-pattern>/prof</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddColHSE</servlet-name>
+        <servlet-name>AddLineHSE</servlet-name>
         <url-pattern>/addhse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddLineMNS</servlet-name>
+        <url-pattern>/addmns</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddLinePROF</servlet-name>
+        <url-pattern>/addprof</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteLineHSE</servlet-name>
+        <url-pattern>/deletehse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteLineMNS</servlet-name>
+        <url-pattern>/deletemns</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteLinePROF</servlet-name>
+        <url-pattern>/deleteprof</url-pattern>
     </servlet-mapping>
 </web-app>

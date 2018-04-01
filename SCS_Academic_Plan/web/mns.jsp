@@ -1,6 +1,5 @@
 <%@ page import="org.scs.ap.content.SubjectGenerate" %>
 <%@ page import="java.sql.Connection" %>
-<%@ page import="org.scs.ap.database.Database" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.scs.ap.view.Config" %>
 <%@ page import="java.sql.Statement" %>

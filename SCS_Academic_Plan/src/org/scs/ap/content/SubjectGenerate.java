@@ -94,10 +94,11 @@ public class SubjectGenerate {
         double num = rs.getDouble(3);
         //номер
         if((num*10)!=((int)num)*10)
-            s.append("<td style=\"").append(backColorHead).append("\">").append(cycle).append(".").append(keypart).append(table.getField(num + "", k++ + "-" + pk, "width:30px;"
-                    + leftFields + backColorHead)).append("</td>");
+            s.append("<td style=\"").append(backColorHead).append("\">").append(cycle).append(".").append(keypart).append(table.getField(num + "",
+                    k++ + "-" + pk, "width:40px;" + leftFields + backColorHead)).append("</td>");
         else
-            s.append("<tr><td>").append(cycle).append(".").append(keypart).append(table.getField((int) num + "", k++ + "-" + pk, "width:30px;" + leftFields)).append("</td>");
+            s.append("<tr><td>").append(cycle).append(".").append(keypart).append(table.getField((int) num + "",
+                    k++ + "-" + pk, "width:40px;" + leftFields)).append("</td>");
         //название дисциплины
         s.append("<td>").append(table.getField(rs.getString(4), k++ + "-" + pk, "width:300px")).append("</td>");
         //шифр кафедры

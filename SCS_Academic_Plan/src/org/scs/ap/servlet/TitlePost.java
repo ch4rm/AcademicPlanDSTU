@@ -32,7 +32,7 @@ public class TitlePost extends HttpServlet {
             upSt.executeBatch();
             upSt.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Ошибка при обновлении title");
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/title.jsp");
         dispatcher.forward(request, response);

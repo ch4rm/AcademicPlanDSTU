@@ -10,7 +10,7 @@
 </div>
 </div>
 <div id="right-block" class="right-block">
-    <button id="setting-but" onclick="setVisible()" class="right-button">></button>
+    <button id="setting-but" onclick="setVisible()" class="right-button"><</button>
 </div>
 <div class="footer">
     &copy ДОНБАССКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ<br>

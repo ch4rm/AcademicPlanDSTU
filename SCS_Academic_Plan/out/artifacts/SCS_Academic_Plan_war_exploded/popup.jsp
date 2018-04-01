@@ -20,6 +20,8 @@
         part_pk.add(rs.getString(1));
         part.add(rs.getString(2));
     }
+    String postAdd[] = {"/addhse", "/addmns", "/addprof"};
+    String postDelete[] = {"/deletehse", "/deletemns", "/deleteprof"};
     st.close();
     rs.close();
 %>
@@ -30,7 +32,7 @@
         document.getElementById('parent_popup').style.display='block';
         var el=document.getElementById('cycle-in');
         el.value = document.getElementById('cycle-head').value;
-   }
+    }
 
     function delCol(){
         document.getElementById('parent_popup1').style.display='block';
@@ -40,7 +42,7 @@
 </script>
 <div id="parent_popup" class="parent_popup">
     <div id="popup" class="popup">
-        <form action="/addhse" method="POST" id="form-popup" class="popup-form">
+        <form action="<%=postAdd[cycle-1]%>" method="POST" id="form-popup" class="popup-form">
             <table class="popup-table">
                 <tr><td style="text-align:center;" colspan="2">Добавить строку в цикл <input type="text" id="cycle-in"
                         name="cycle-in" class="text-field" style="font-size: 16pt; width: 30px;" >:</td></tr>
@@ -85,11 +87,13 @@
 
 <div id="parent_popup1" class="parent_popup">
     <div id="popup1" class="popup">
-        <form method="POST" id="form-popup1" class="popup-form" style="height:200px;">
+        <form action="<%=postDelete[cycle-1]%>" method="POST" id="form-popup1" class="popup-form" style="height:200px;">
             <table class="popup-table">
                 <tr><td style="text-align:center;" colspan="2">Удалить строку в цикле <input type="text" id="cycle-in1"
                         name="cycle-in" class="text-field" style="font-size: 16pt; width: 30px;" >:</td></tr>
-                <tr><td>Имя части (Б/В): </td><td><input type="text" name="part-name-cl" class="text-field-n"></td></tr>
+                <tr><td>Имя части: </td><td><select name="part-name-cl" class="text-field-n">
+                    <option value="<%=part_pk.get(0)%>"><%=part.get(0)%></option>
+                    <option value="<%=part_pk.get(1)%>"><%=part.get(1)%></option></select></td></tr>
                 <tr><td>Номер предмета (1/1.1): </td><td><input type="text" name="part-num-cl" class="text-field-n"></td></tr>
                 <tr><td></td><td><input type="submit" class="save-button remove" value="Удалить"/></td></tr>
             </table>

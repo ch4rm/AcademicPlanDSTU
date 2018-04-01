@@ -26,7 +26,7 @@ public class TitleGenerate {
     private int ressearch[] = new int[4];
     private int stateExam[] = new int[4];
     private int finalWork[] = new int[4];
-    private int monthTableColumns[]={4, 5, 4, 4, 5, 4, 4, 4, 5, 4, 4, 5};
+    private final int monthTableColumns[]={4, 5, 4, 4, 5, 4, 4, 4, 5, 4, 4, 5};
 
     public TitleGenerate(Connection connection, Config config, String backColorHead){
         this.backColorHead = backColorHead;

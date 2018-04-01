@@ -17,17 +17,17 @@ public class HSEPost extends HttpServlet {
     //Имена полей в subject_assignment
     private String subjectsNamesAsgn[]={"hour_lec_sa", "hour_lab_sa", "hour_prac_sa","hour_self_sa"};
     //номер поля key_subject_pk
-    private int isubjectPk;
+    private int isubjectPk=1;
     //номер поля key_subject
-    private int ikeySubject;
+    private int ikeySubject=3;
     //номер поля name_s
-    private int inameS;
+    private int inameS=4;
     //номер поля exams_s
-    private int iexams;
+    private int iexams=5;
     //номер поля setoff_s
-    private int isetoff;
+    private int isetoff=6;
     //имя первого поля subject_assignment
-    private int bSubAssign;
+    private int bSubAssign=7;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -37,13 +37,6 @@ public class HSEPost extends HttpServlet {
     }
 
     public void postAction(HttpServletRequest request, HttpServletResponse response, int cycle)  throws ServletException, IOException {
-        isubjectPk=1;
-        ikeySubject=3;
-        inameS=4;
-        iexams=5;
-        isetoff=6;
-        bSubAssign= 7;
-
         try{
             connection.setAutoCommit(false);
             Statement st = connection.createStatement();
@@ -56,7 +49,9 @@ public class HSEPost extends HttpServlet {
             st.executeBatch();
             st.close();
             connection.setAutoCommit(true);
-        }catch(SQLException e){}
+        }catch(SQLException e){
+            System.out.println("Ошибка при обновлении subject и subject_assignment");
+        }
     }
 
     /**

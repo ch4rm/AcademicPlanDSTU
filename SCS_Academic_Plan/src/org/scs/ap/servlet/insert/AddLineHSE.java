@@ -1,6 +1,4 @@
-package org.scs.ap.servlet;
-
-import org.scs.ap.database.Database;
+package org.scs.ap.servlet.insert;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,15 +11,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import static org.scs.ap.servlet.Login.db;
 
 /**
  * Created by User on 11.03.2018.
  */
-@WebServlet(name = "AddColHSE")
-public class AddColHSE extends HttpServlet {
+@WebServlet(name = "AddLineHSE")
+public class  AddLineHSE extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         try {
@@ -36,7 +33,7 @@ public class AddColHSE extends HttpServlet {
     public void postAction(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String cyclen = request.getParameter("cycle-in");
         int part = Integer.parseInt(request.getParameter("part-name"));
-        String names = request.getParameter("dist-name");
+        String dname = request.getParameter("dist-name");
         int dep = Integer.parseInt(request.getParameter("dep-name"));
         int sem = Integer.parseInt(request.getParameter("sem-num"));
         try {
@@ -49,33 +46,31 @@ public class AddColHSE extends HttpServlet {
                 if (cyclen.equals(rs.getString(1))) break;
                 cycleNum++;
             }
-            if(cycleNum==0)
-                throw new Exception();
-            //Номер части в базе
-            rs = st.executeQuery("SELECT key_parts_pk FROM parts WHERE key_cycle_fk = "+cycleNum);
-            ArrayList<Integer> keyPartsPk = new ArrayList<>();
-            while(rs.next())
-                keyPartsPk.add(rs.getInt(1));
-            part=keyPartsPk.get(part-1);
             //Масимальный номер части
             rs = st.executeQuery("SELECT MAX(key_subject) FROM subjects WHERE key_parts_fk = "+part);
-            String keySubject="";
+            String keySubjectS="";
             while(rs.next())
-                keySubject = rs.getString(1);
+                keySubjectS = rs.getString(1);
+            int keySubject=(int)Double.parseDouble(keySubjectS)+1;
+            //в таблицу subject
+            st.executeUpdate("INSERT INTO subjects (key_subject, key_ap_fk, key_cycle_fk, key_parts_fk, name_s, " +
+                    "key_department_fk, exams_s, setoff_s, lect_s, lab_s, pract_s, ksr_s, bsr_s) " +
+                    "VALUES("+keySubject+", 1, "+cycleNum+", "+part+", '"+dname+"', "+dep+
+                    ", 0, 0, 0, 0, 0, 0, 0)");
+            rs =st.executeQuery("SELECT key_subject_pk FROM subjects WHERE key_subject = "+
+                    keySubject+" AND name_s = '"+dname+"' AND key_cycle_fk = " + cycleNum +
+                    " AND key_parts_fk = "+part);
+            long fk=0;
+            while(rs.next())
+                fk = rs.getLong(1);
             rs.close();
-
-            //st.executeUpdate("INSERT INTO ");
-            //st.executeUpdate("INSERT INTO ");
-            System.out.println(cycleNum);
-            System.out.println(part);
-            System.out.println(names);
-            System.out.println(dep);
-            System.out.println(sem);
-            System.out.println(keySubject);
-
+            //в таблицу subject_assignment
+            st.executeUpdate("INSERT INTO subject_assignment (key_subject_fk, course_num_sa, semester_num_sa, " +
+                    "key_type_fk, hour_lec_sa, hour_lab_sa, hour_prac_sa, hour_self_sa, hour_exam_sa) " +
+                    "VALUES("+fk+", 0, "+sem+", "+cycleNum+", 0, 0, 0, 0, 0)");
             st.close();
         }catch (Exception e){
-
+            System.out.println("Ошибка при добавлении строки subject и subject_assignment");
         }
     }
 }

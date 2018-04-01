@@ -11,20 +11,21 @@
         var style = document.getElementById("right-block").style;
         var style2 = document.getElementById("left-block").style;
         var button = document.getElementById("setting-but");
-        if(style.width == "25px") {
-            style.width = "200px";
-            style2.width = "calc(100% - (200px))";
-            button.innerHTML=">";
-        }else{
+        if(style.width == "400px") {
             style.width = "25px";
             style2.width="calc(100% - (25px))";
             button.innerHTML="<";
+        }else{
+
+            style.width = "400px";
+            style2.width = "calc(100% - (400px))";
+            button.innerHTML=">";
         }
     }
 
     function init() {
         var table = document.getElementById("cont-table");
-        if(table.offsetHeight>1200) {
+        if(table.offsetHeight>1100) {
             document.getElementById("cont-block").style.height = table.offsetHeight + 220 + "px";
             document.getElementById("cont-main-block").style.height = table.offsetHeight+70+"px";
         }
