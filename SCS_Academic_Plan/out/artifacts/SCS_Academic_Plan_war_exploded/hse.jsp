@@ -36,11 +36,11 @@
                 <td rowspan="4" style="width: 90px"><%=content.get(0)%></td>
                 <td rowspan="4" style="width: 300px"><%=content.get(1)%></td>
                 <td rowspan="4" style="width: 55px" class="rotatable"><%=content.get(2)%></td>
-                <td rowspan="4" class="rotatable"><%=content.get(3)%></td>
+                <td rowspan="4" style="width: 32px" class="rotatable"><%=content.get(3)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(4)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(5)%></td>
-                <td rowspan="4" style="width: 25px" class="rotatable"><%=content.get(6)%></td>
-                <td colspan="7" style="width: 270px"><%=content.get(7)%></td>
+                <td rowspan="4" style="width: 30px" class="rotatable"><%=content.get(6)%></td>
+                <td colspan="7" style="width: 290px"><%=content.get(7)%></td>
                 <td colspan="32">
                     <%=content.get(8)%>
                 </td>

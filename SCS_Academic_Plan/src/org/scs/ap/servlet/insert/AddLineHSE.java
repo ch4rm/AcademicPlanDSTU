@@ -21,16 +21,12 @@ import static org.scs.ap.servlet.Login.db;
 public class  AddLineHSE extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        try {
-            postAction(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        postAction(request, response);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/hse.jsp");
         dispatcher.forward(request, response);
     }
 
-    public void postAction(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    public void postAction(HttpServletRequest request, HttpServletResponse response){
         String cyclen = request.getParameter("cycle-in");
         int part = Integer.parseInt(request.getParameter("part-name"));
         String dname = request.getParameter("dist-name");

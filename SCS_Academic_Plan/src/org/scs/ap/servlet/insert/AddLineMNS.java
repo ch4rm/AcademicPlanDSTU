@@ -16,12 +16,8 @@ import java.sql.SQLException;
 public class AddLineMNS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        try {
-            AddLineHSE hse = new AddLineHSE();
-            hse.postAction(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        AddLineHSE hse = new AddLineHSE();
+        hse.postAction(request, response);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/mns.jsp");
         dispatcher.forward(request, response);
     }
