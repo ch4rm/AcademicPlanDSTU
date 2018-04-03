@@ -23,9 +23,9 @@ public class DeleteLineHSE extends HttpServlet {
     }
 
     public void postAction(HttpServletRequest request, HttpServletResponse response){
-        int part = Integer.parseInt(request.getParameter("part-name-cl"));
-        double subjectNum = Double.parseDouble(request.getParameter("part-num-cl"));
         try {
+            int part = Integer.parseInt(request.getParameter("part-name-cl"));
+            double subjectNum = Double.parseDouble(request.getParameter("part-num-cl"));
             Connection connection = db.getConnection();
             Statement st = connection.createStatement();
             //ПК

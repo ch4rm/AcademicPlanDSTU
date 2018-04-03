@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.scs.ap.servlet.Login.db;
@@ -27,12 +26,12 @@ public class  AddLineHSE extends HttpServlet {
     }
 
     public void postAction(HttpServletRequest request, HttpServletResponse response){
-        String cyclen = request.getParameter("cycle-in");
-        int part = Integer.parseInt(request.getParameter("part-name"));
-        String dname = request.getParameter("dist-name");
-        int dep = Integer.parseInt(request.getParameter("dep-name"));
-        int sem = Integer.parseInt(request.getParameter("sem-num"));
         try {
+            String cyclen = request.getParameter("cycle-in");
+            int part = Integer.parseInt(request.getParameter("part-name"));
+            String dname = request.getParameter("dist-name");
+            int dep = Integer.parseInt(request.getParameter("dep-name"));
+            int sem = Integer.parseInt(request.getParameter("sem-num"));
             Connection connection = db.getConnection();
             Statement st = connection.createStatement();
             //Номер цикла в базе
