@@ -1,4 +1,9 @@
+<%@ page import="org.scs.ap.view.Message" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    Message message = new Message();
+%>
 <html>
     <head>
         <title>Главная</title>
@@ -31,3 +36,8 @@
         </form>
     </body>
 </html>
+<% if(message.isShow()){ %>
+<script>
+    alert('<%=message.getMessage()%>')
+</script>
+<% } %>

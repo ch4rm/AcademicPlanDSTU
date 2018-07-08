@@ -10,9 +10,19 @@ import java.util.ArrayList;
 
 public class Config{
     private Document document;
+    private String XMLname = "servlet-text.xml";
+
+    public Config(String XMLname){
+        this.XMLname = XMLname;
+        openXML();
+    }
 
     public Config(){
-        URL file = getClass().getResource("servlet-text.xml");
+        openXML();
+    }
+
+    private void openXML(){
+        URL file = getClass().getResource(XMLname);
         File xmlFile = new File(file.getPath());
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;

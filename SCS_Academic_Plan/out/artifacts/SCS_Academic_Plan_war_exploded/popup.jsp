@@ -11,19 +11,26 @@
     ArrayList<String> part_pk = new ArrayList<String>();
     ArrayList<String> part = new ArrayList<String>();
     ArrayList<String> dp = new ArrayList<String>();
-    Statement st = db.getConnection().createStatement();
-    ResultSet rs = st.executeQuery("SELECT key_department FROM departments");
-    while(rs.next())
-        dp.add(rs.getString(1));
-    rs = st.executeQuery("SELECT key_parts_pk, key_parts_let FROM parts WHERE key_cycle_fk="+cycle);
-    while(rs.next()) {
-        part_pk.add(rs.getString(1));
-        part.add(rs.getString(2));
+    Statement st;
+    ResultSet rs;
+    try {
+        st = db.getConnection().createStatement();
+        rs = st.executeQuery("SELECT key_department FROM departments");
+        while (rs.next())
+            dp.add(rs.getString(1));
+        rs = st.executeQuery("SELECT key_parts_pk, key_parts_let FROM parts WHERE key_cycle_fk=" + cycle);
+        while (rs.next()) {
+            part_pk.add(rs.getString(1));
+            part.add(rs.getString(2));
+        }
+        st.close();
+        rs.close();
+    }catch(SQLException e){
+        System.out.println(e.toString());
     }
     String postAdd[] = {"/addhse", "/addmns", "/addprof"};
     String postDelete[] = {"/deletehse", "/deletemns", "/deleteprof"};
-    st.close();
-    rs.close();
+
 %>
 
 
@@ -78,10 +85,13 @@
                         <option value="8">8</option>
                     </select>
                 </td></tr>
+                <tr><td>Экзамен</td><td><input type="radio" checked name="type" class = "checkmark" value="0"></td></tr>
+                <tr><td>Зачёт</td><td><input type="radio" name="type" class = "checkmark" value="1"></td></tr>
+                <tr><td>Пустой</td><td><input type="radio" name="type" class = "checkmark" value="2"></td></tr>
                 <tr><td></td><td><input type="submit" class="save-button addb" value="Добавить"/></td></tr>
             </table>
         </form>
-        <a class="close"title="Закрыть" onclick="document.getElementById('parent_popup').style.display='none';">X</a></div>
+        <a class="close" title="Закрыть" onclick="document.getElementById('parent_popup').style.display='none';">X</a></div>
 </div>
 
 
@@ -98,5 +108,5 @@
                 <tr><td></td><td><input type="submit" class="save-button remove" value="Удалить"/></td></tr>
             </table>
         </form>
-        <a class="close"title="Закрыть" onclick="document.getElementById('parent_popup1').style.display='none';">X</a></div>
+        <a class="close" title="Закрыть" onclick="document.getElementById('parent_popup1').style.display='none';">X</a></div>
 </div>

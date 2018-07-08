@@ -3,7 +3,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.scs.ap.view.Config" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="static org.scs.ap.servlet.Login.db" %><%--
+<%@ page import="static org.scs.ap.servlet.Login.db" %>
+<%@ page import="org.scs.ap.database.Database" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="org.scs.ap.view.Message" %>
+<%@ page import="org.scs.ap.servlet.Session" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 14.01.2018
@@ -12,17 +16,27 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    Message message = new Message();
+
     String backColorHead="background: #FFD0C6";
     int cycle = 2;
     int parts[] = {3, 4};
 
-    Connection connection = db.getConnection();
-    Statement statement = connection.createStatement();
-    statement.execute("SELECT create_sub("+cycle+");");
-    SubjectGenerate mns = new SubjectGenerate(connection,backColorHead);
+    Statement statement;
     Config cfg = new Config();
-    ArrayList<String> content = cfg.getArrayXml("table-hmp");
-    statement.close();
+    ArrayList<String> content = new ArrayList<>();
+    SubjectGenerate mns = null;
+    try {
+        Database database = new Database();
+        Connection connection = database.getConnection();
+        statement = connection.createStatement();
+        statement.execute("SELECT create_sub(" + cycle + ");");
+        mns = new SubjectGenerate(connection, backColorHead);
+        content = cfg.getArrayXml("table-hmp");
+        statement.close();
+    }catch(SQLException e){
+        System.out.println(e.toString());
+    }
 %>
 <html>
 <head>
@@ -37,7 +51,7 @@
             <tr>
                 <td rowspan="4" style="width: 90px"><%=content.get(0)%></td>
                 <td rowspan="4" style="width: 300px"><%=content.get(1)%></td>
-                <td rowspan="4" style="width: 55px" class="rotatable"><%=content.get(2)%></td>
+                <td rowspan="4" style="width: 100px"><%=content.get(2)%></td>
                 <td rowspan="4" style="width: 32px" class="rotatable"><%=content.get(3)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(4)%></td>
                 <td rowspan="4" class="rotatable"><%=content.get(5)%></td>
@@ -62,10 +76,26 @@
             <%=mns.summPage()%>
         </table>
     </div>
-    <div style="width: 1800px; height: 100px; bottom:0;">
+    <div style="width: 2000px; height: 100px; bottom:0;">
+        <%
+            Session sess = new Session();
+            if(sess.getAcces()<3){
+        %>
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>
+        <%
+            }
+            if(sess.getAcces()<2){
+        %>
         <input type="button" name="add" class="save-button addb" value="Добавить" onclick="addCol();"/>
         <input type="button" name="remove" class="save-button remove" value="Удалить" onclick="delCol();"/>
+        <%
+            }
+        %>
     </div>
 </form>
 <%@ include file="bottom-container.jsp" %>
+<% if(message.isShow()){ %>
+<script>
+    alert('<%=message.getMessage()%>')
+</script>
+<% } %>

@@ -38,14 +38,14 @@ body{
 .left-block {
 	float:left;
 	/* JSP */
-	width:calc(100% - (25px));
+	width:calc(100% - (350px));
 	height:calc(100% - (90px));
 	overflow:auto;
 }
 
 /* ПРАВЫЙ БЛОК НАСТРОЕК */
 .right-block {
-	width: 25px;
+	width: 350px;
 	height:calc(100% - (90px));
 	background-color:#EBEBEB;
 	text-align:center;
@@ -70,7 +70,7 @@ body{
 /* КОНТЕЙНЕР ДЛЯ ТАБЛИЦ */
 .content-block{
 	background:#FFFFFF;
-	width: 2000px;
+	width: 2100px;
 	height: 1240px;
 	margin: 40px;
 	box-shadow: 0 0 25px rgba(0,0,0,0.8);
@@ -264,7 +264,7 @@ body{
 
 .popup-form{
 	width: 500px;
-	height: 300px;
+	height: 400px;
 }
 
 .popup-table{
@@ -289,4 +289,36 @@ body{
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+}
+
+.counter-table{
+	padding-top: 30px;
+	display: block;
+	margin: 0 auto;
+}
+
+.counter-table tr td {
+	padding: 1px 5px 3px 5px;
+}
+
+.counter-table td {
+	text-align: center;
+	width: 70px;
+	font-size: 12pt;
+}
+
+.text-field-table {
+	font-size: 11pt;
+	width: 100%;
+	padding: 1px 5px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* Create a custom radio button */
+.checkmark {
+	height: 25px;
+	width: 25px;
 }

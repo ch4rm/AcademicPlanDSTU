@@ -1,5 +1,7 @@
 package org.scs.ap.servlet.delete;
 
+import org.scs.ap.view.Message;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import static org.scs.ap.servlet.Login.db;
 
 @WebServlet(name = "DeleteLineHSE")
 public class DeleteLineHSE extends HttpServlet {
+    Message message = new Message();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         postAction(request, response);
@@ -36,7 +39,7 @@ public class DeleteLineHSE extends HttpServlet {
             st.executeUpdate("DELETE FROM subject_assignment WHERE key_subject_fk = " + pk);
             st.executeUpdate("DELETE FROM subjects WHERE key_subject_pk = " + pk);
         }catch(Exception e){
-            System.out.println("Ошибка при удалении строки subject и subject_assignment");
+            message.setMessage("Введены неверные значения при удалении строки");
         }
     }
 }

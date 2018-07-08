@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <!-- АДМИНИСТРАТОРЫ -->
+    <person>
+        <login>admin</login>
+        <password>admin</password>
+        <acces>1</acces>
+    </person>
+    <!-- МОДЕРАТОРЫ -->
+    <person>
+        <login>moder</login>
+        <password>moder</password>
+        <acces>2</acces>
+    </person>
+    <!-- ПОСЕТИТЕЛИ -->
+    <person>
+        <login>visitor</login>
+        <password>visitor</password>
+        <acces>3</acces>
+    </person>
+</root>
+
+

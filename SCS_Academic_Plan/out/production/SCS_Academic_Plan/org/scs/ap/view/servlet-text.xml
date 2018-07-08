@@ -103,6 +103,10 @@
             <table-hmp2>Пр.</table-hmp2>
             <table-hmp2>Сам.</table-hmp2>
         </table-h2>
+        <footers>
+            <footer>ДОНБАССКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ</footer>
+            <footer>КАФЕДРА СПЕЦИАЛИЗИРОВАННЫХ КОМПЮТЕРНЫХ СИСТЕМ | 2018</footer>
+        </footers>
     </hse-mns-prof>
 </academicPlan>
 

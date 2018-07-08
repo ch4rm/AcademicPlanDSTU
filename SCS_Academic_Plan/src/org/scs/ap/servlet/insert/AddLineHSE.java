@@ -1,5 +1,7 @@
 package org.scs.ap.servlet.insert;
 
+import org.scs.ap.view.Message;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +20,7 @@ import static org.scs.ap.servlet.Login.db;
  */
 @WebServlet(name = "AddLineHSE")
 public class  AddLineHSE extends HttpServlet {
+    Message message = new Message();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         postAction(request, response);
@@ -27,6 +30,8 @@ public class  AddLineHSE extends HttpServlet {
 
     public void postAction(HttpServletRequest request, HttpServletResponse response){
         try {
+            // 0 - экзамен, 1 - зачёт, 2 - ничего
+            int type = Integer.parseInt(request.getParameter("type"));
             String cyclen = request.getParameter("cycle-in");
             int part = Integer.parseInt(request.getParameter("part-name"));
             String dname = request.getParameter("dist-name");
@@ -47,11 +52,19 @@ public class  AddLineHSE extends HttpServlet {
             while(rs.next())
                 keySubjectS = rs.getString(1);
             int keySubject=(int)Double.parseDouble(keySubjectS)+1;
+            //занести значение в экзамены или в зачёты
+            int exam = 0;
+            int setoff = 0;
+            if(type==0)
+                exam = sem;
+            else if(type==1)
+                setoff = sem;
+            else sem = 0;
             //в таблицу subject
             st.executeUpdate("INSERT INTO subjects (key_subject, key_ap_fk, key_cycle_fk, key_parts_fk, name_s, " +
                     "key_department_fk, exams_s, setoff_s, lect_s, lab_s, pract_s, ksr_s, bsr_s) " +
                     "VALUES("+keySubject+", 1, "+cycleNum+", "+part+", '"+dname+"', "+dep+
-                    ", 0, 0, 0, 0, 0, 0, 0)");
+                    ", "+exam+", "+setoff+", 0, 0, 0, 0, 0)");
             rs =st.executeQuery("SELECT key_subject_pk FROM subjects WHERE key_subject = "+
                     keySubject+" AND name_s = '"+dname+"' AND key_cycle_fk = " + cycleNum +
                     " AND key_parts_fk = "+part);
@@ -65,7 +78,7 @@ public class  AddLineHSE extends HttpServlet {
                     "VALUES("+fk+", 0, "+sem+", "+cycleNum+", 0, 0, 0, 0, 0)");
             st.close();
         }catch (Exception e){
-            System.out.println("Ошибка при добавлении строки subject и subject_assignment");
+            message.setMessage("Введены неверные значения при добавлении строки");
         }
     }
 }

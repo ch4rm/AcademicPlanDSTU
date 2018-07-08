@@ -2,8 +2,12 @@
 <%@ page import="org.scs.ap.view.Config" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="static org.scs.ap.servlet.Login.db" %>
+<%@ page import="org.scs.ap.view.Message" %>
+<%@ page import="org.scs.ap.servlet.Session" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%  String backColorHead="background: white";
+<%
+    Message message = new Message();
+    String backColorHead="background: white";
     Config cfg = new Config();
     TitleGenerate titles = new TitleGenerate(db.getConnection(), cfg, backColorHead);
     ArrayList<String> content = cfg.getArrayXml("content");
@@ -28,7 +32,7 @@
                     <h4><%=content.get(2)%></h4>
                     И.о. ректора __ <%=content.get(3)%><br>
                     "__"____ <input type="text" name="yearCreation" class="text-field" value="<%=titles.getYearCreations()%>">г.<br>
-                    <%=content.get(4)%> __.__.<input type="text" name="yearCreation" class="text-field" value="<%=titles.getYearCreations()%>">г. №__
+                    <%=content.get(4)%> __.__.<input type="text" name="yearCreation1" class="text-field" value="<%=titles.getYearCreations()%>">г. №__
                 </td>
                 <td style="text-align: right; padding-right: 100px">
                     <%=content.get(5)%> <input type="text" name="qualification" style="width: 80px" class="text-field" value="<%=titles.getQualification()%>"><br>
@@ -95,8 +99,20 @@
             </div>
         </div>
     </div>
-    <div style="width: 1800px; height: 100px; bottom:0;">
+    <div style="width: 2000px; height: 100px; bottom:0;">
+        <%
+            Session sess = new Session();
+            if(sess.getAcces()<3){
+        %>
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>
+        <%
+            }
+        %>
     </div>
 </form>
 <%@ include file="bottom-container.jsp" %>
+<% if(message.isShow()){ %>
+<script>
+    alert('<%=message.getMessage()%>')
+</script>
+<% } %>

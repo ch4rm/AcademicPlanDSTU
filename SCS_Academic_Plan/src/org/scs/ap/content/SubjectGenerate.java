@@ -14,7 +14,6 @@ public class SubjectGenerate {
     private int cols;
     private int allSum[];
     private double allZE=0;
-    private String leftFields="font-size: 11pt; padding-left: 2;";
 
     public SubjectGenerate(Connection connection, String backColorHead){
         table = new Table();
@@ -65,7 +64,7 @@ public class SubjectGenerate {
      * Предметы (Б1.Б1 История)
      */
     public String getSubjects(int keyPart) throws SQLException{
-        String s="";
+        StringBuilder s= new StringBuilder();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM get_subjects WHERE key_parts_fk = "+keyPart+" ORDER BY key_subject");
         ResultSetMetaData rsmt = rs.getMetaData();
@@ -74,18 +73,18 @@ public class SubjectGenerate {
         int summ[] = new int[cols-6];
         while(rs.next()){
             int pk = rs.getInt(1);
-            s+="<tr>";
-            s+=genSubjectsCols(rs, pk, cols);
-            s+="</tr>";
+            s.append("<tr>");
+            s.append(genSubjectsCols(rs, pk, cols));
+            s.append("</tr>");
             summ(rs, summ);
             //з.е.
             summZE+=rs.getDouble(6);
             allZE+=rs.getDouble(6);
         }
-        s+=summTable(summ, summZE);
+        s.append(summTable(summ, summZE));
         rs.close();
         statement.close();
-        return s;
+        return s.toString();
     }
 
     private String genSubjectsCols(ResultSet rs, int pk, int cols) throws SQLException{
@@ -93,6 +92,7 @@ public class SubjectGenerate {
         int k=3;
         double num = rs.getDouble(3);
         //номер
+        String leftFields = "font-size: 11pt; padding-left: 2;";
         if((num*10)!=((int)num)*10)
             s.append("<td style=\"").append(backColorHead).append("\">").append(cycle).append(".").append(keypart).append(table.getField(num + "",
                     k++ + "-" + pk, "width:40px;" + leftFields + backColorHead)).append("</td>");
@@ -102,14 +102,15 @@ public class SubjectGenerate {
         //название дисциплины
         s.append("<td>").append(table.getField(rs.getString(4), k++ + "-" + pk, "width:300px")).append("</td>");
         //шифр кафедры
-        s.append("<td>").append(rs.getString(5)).append("</td>");
+        s.append("<td>").append(selectOption(k++, pk, rs.getInt(5))).append("</td>");
         //з.е
         s.append("<td>").append(rs.getDouble(6)).append("</td>");
         //экзамены и зачёты
-        s.append("<td>").append(table.getField(rs.getString(7), k++ + "-" + pk, "width:20px")).append("</td>");
-        s.append("<td>").append(table.getField(rs.getString(8), k++ + "-" + pk, "width:20px")).append("</td>");
-        for (int i=9; i<=16;i++)
+        s.append("<td>").append(table.getField(rs.getString(7), k++ + "-" + pk, "width:25px")).append("</td>");
+        s.append("<td>").append(table.getField(rs.getString(8), k++ + "-" + pk, "width:25px")).append("</td>");
+        for (int i=9; i<=15;i++)
             s.append("<td>").append(rs.getInt(i)).append("</td>");
+        s.append("<td>").append(table.getField(rs.getString(16), k++ + "-" + pk, "width:30px")).append("</td>");
         //SubjectAssignment
         for(int i=17;i<=cols;i++) {
             String col = rs.getString(i);
@@ -123,8 +124,16 @@ public class SubjectGenerate {
     }
 
     private void summ(ResultSet rs, int summ[]) throws SQLException{
-        int j=0;
-        for(int i=7; i<summ.length;i++) {
+        if(rs.getInt(7)!=0) {
+            allSum[0]++;
+            summ[0]++;
+        }
+        if(rs.getInt(8)!=0) {
+            allSum[1]++;
+            summ[1]++;
+        }
+        int j=2;
+        for(int i=9; i<summ.length;i++) {
             allSum[j] += rs.getInt(i);
             summ[j++] += rs.getInt(i);
         }
@@ -146,6 +155,30 @@ public class SubjectGenerate {
         for (int i=0;i<cols-6;i++)
             s.append("<td>").append(allSum[i]).append("</td>");
         s.append("</tr>");
+        return s.toString();
+    }
+
+    /**
+     * Сгенерировать выпадающий список с шифром кафедры
+     * @return
+     */
+    private String selectOption(int k, int pk, int selected) throws SQLException{
+        ArrayList<String> dp = new ArrayList<String>();
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery("SELECT key_department FROM departments");
+        while (rs.next())
+            dp.add(rs.getString(1));
+        st.close();
+        rs.close();
+        String name = k + "-" + pk;
+        StringBuilder s = new StringBuilder("<select name=\"" + name + "\" class=\"text-field-table\">");
+        int i=1;
+        for(String d : dp)
+            if(i==selected)
+                s.append("<option value=\"").append(i++).append("\" selected>").append(d).append("</option>");
+            else
+            s.append("<option value=\"").append(i++).append("\">").append(d).append("</option>");
+        s.append("</select>");
         return s.toString();
     }
 

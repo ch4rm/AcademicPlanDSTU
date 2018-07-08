@@ -59,7 +59,7 @@ public class TitleGenerate {
             resultSet.close();
             statement.close();
         }catch (SQLException e){
-            new RuntimeException(e);
+            System.out.println(e.toString());
         }
     }
 
@@ -89,7 +89,7 @@ public class TitleGenerate {
             genLabelMsa(table, statement);
             statement.close();
         }catch (SQLException e){
-            new RuntimeException(e);
+            System.out.println(e.toString());
         }
         return table.toString();
     }
@@ -130,8 +130,11 @@ public class TitleGenerate {
                     table.addField(str.get(kurs), "label_msa"+name);
                     switch (str.get(kurs)) {
                         case "СК": passingExam[i]+=1; break;
+                        case "CK": passingExam[i]+=1; break;
                         case "С": session[i]+=1; break;
+                        case "C": session[i]+=1; break;
                         case "К": vacation[i]+=1; break;
+                        case "K": vacation[i]+=1; break;
                         case "П": practice[i]+=1; break;
                         case "Н": ressearch[i]+=1; break;
                         case "Г": stateExam[i]+=1; break;
@@ -227,7 +230,7 @@ public class TitleGenerate {
             resultSet.close();
             statement.close();
         }catch (SQLException e){
-            new RuntimeException(e);
+            System.out.println(e.toString());
         }
         return table.toString();
     }
@@ -268,7 +271,7 @@ public class TitleGenerate {
             resultSet.close();
             statement.close();
         }catch (SQLException e){
-            new RuntimeException(e);
+            System.out.println(e.toString());
         }
         return table.toString();
     }
