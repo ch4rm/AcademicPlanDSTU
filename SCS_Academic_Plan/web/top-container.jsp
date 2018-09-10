@@ -31,6 +31,10 @@
         }
     }
 </script>
+<%
+    Session sess = new Session();
+    if(sess.getAcces()>0){
+%>
 <body onload="init();">
 <div class="wrapper">
     <div class = "menu">
@@ -41,6 +45,7 @@
             <li><a href="prof.jsp">ПРОФ</a></li>
             <!-- <li><a href="summary.jsp">ИТОГ</a></li>
             <li><a href="calculation.jsp">РАСЧЕТ РУП</a></li> -->
+            <li style="width: 90%"><form action="/ext" style="float: right" method="POST"><input type="submit" name="submit" class="exit-button" value="Выход"/></form></li>
         </ul>
     </div>
     <div id="left-block" class="left-block custom-scrollbar">

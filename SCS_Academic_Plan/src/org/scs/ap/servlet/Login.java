@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 @WebServlet(name = "Login")
@@ -19,6 +20,8 @@ public class Login extends HttpServlet {
     private Message message = new Message();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Connection connection = db.getConnection();
+
         request.setCharacterEncoding("UTF-8");
         Config config = new Config("logins.xml");
         ArrayList<String> logins = config.getArrayXml("login");

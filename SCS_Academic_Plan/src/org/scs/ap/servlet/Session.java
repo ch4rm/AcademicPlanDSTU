@@ -1,7 +1,7 @@
 package org.scs.ap.servlet;
 
 public class Session {
-    private static int acces = 3;
+    private static int acces = -1;
 
     public void setAcces(int acces){
         this.acces = acces;

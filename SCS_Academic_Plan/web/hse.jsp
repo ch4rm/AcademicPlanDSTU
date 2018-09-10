@@ -79,7 +79,6 @@
     </div>
     <div style="width: 2000px; height: 100px; bottom:0;">
         <%
-            Session sess = new Session();
             if(sess.getAcces()<3){
         %>
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>

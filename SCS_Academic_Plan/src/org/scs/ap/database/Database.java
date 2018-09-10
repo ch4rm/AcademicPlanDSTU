@@ -27,7 +27,6 @@ public final class Database {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC Driver не найден");
-            new RuntimeException(e);
             return null;
         }
         System.out.println("PostgreSQL JDBC Driver успешно подключен");
@@ -35,7 +34,6 @@ public final class Database {
             connection = DriverManager.getConnection(url, name, password);
         } catch (SQLException e) {
             System.out.println("Соединение провалено");
-            new RuntimeException(e);
             return null;
         }
         if (connection != null) {

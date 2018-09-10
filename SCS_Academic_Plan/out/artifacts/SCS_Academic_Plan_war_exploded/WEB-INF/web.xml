@@ -56,6 +56,10 @@
         <servlet-name>DeleteLinePROF</servlet-name>
         <servlet-class>org.scs.ap.servlet.delete.DeleteLinePROF</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExitPost</servlet-name>
+        <servlet-class>org.scs.ap.servlet.ExitPost</servlet-class>
+    </servlet>
 
     <!-- mapping -->
     <servlet-mapping>
@@ -105,5 +109,9 @@
     <servlet-mapping>
         <servlet-name>DeleteLinePROF</servlet-name>
         <url-pattern>/deleteprof</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExitPost</servlet-name>
+        <url-pattern>/ext</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -4,6 +4,7 @@
 <%@ page import="static org.scs.ap.servlet.Login.db" %>
 <%@ page import="org.scs.ap.view.Message" %>
 <%@ page import="org.scs.ap.servlet.Session" %>
+<%@ page import="org.scs.ap.servlet.Direct" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Message message = new Message();
@@ -101,7 +102,6 @@
     </div>
     <div style="width: 2000px; height: 100px; bottom:0;">
         <%
-            Session sess = new Session();
             if(sess.getAcces()<3){
         %>
         <input type="submit" name="submit" class="save-button" value="Сохранить"/>
